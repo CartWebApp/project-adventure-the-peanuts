@@ -1,17 +1,44 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose Your Adventure</title>
+    <title>Placeholder</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game">
-        <h1>Choose Your Adventure</h1>
-        <p id="story-text">Welcome to your adventure...</p>
-        <div id="choices"></div>
+    <div id="game-container">
+        <div id="dialogue"></div> this will display the dialogue text
+        <div id="choices"></div> this will display the choices
     </div>
+
     <script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legally Blonde</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Cover Screen -->
+<div id="cover-screen">
+  <img src="images/background-placeholder.jpg" alt="Game Cover" id="cover-image" />
+  <h1>Title</h1>
+</div>
+
+<!-- Name Input Screen -->
+<div id="name-screen" style="display:none;">
+  <label for="player-name">Enter your name:</label>
+  <input type="text" id="player-name" placeholder="Your name here" />
+  <button id="start-button">Start Game</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
