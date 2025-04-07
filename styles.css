@@ -6,6 +6,7 @@
     height: 100vh;
     opacity: 1;
     transition: opacity 1s ease-in-out; /* Fade-out effect */
+    background-color: red;
   }
   
   #cover-screen img {
@@ -13,6 +14,8 @@
     height: auto;
     max-height: 80vh; /* Adjust image height */
     object-fit: cover;
+    background-color: #15ff00;
+    
   }
   
   #cover-screen h1 {
@@ -20,6 +23,7 @@
     margin-top: -50px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+    background-color: rgb(147, 0, 226);
   }
   
   /* Name Screen */
@@ -27,6 +31,10 @@
     text-align: center;
     padding: 20px;
     display: none; /* Hidden initially */
+    background-color: rgb(155, 187, 24);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
   }
   
   #name-screen input {
@@ -34,6 +42,7 @@
     font-size: 1.2em;
     margin-bottom: 20px;
     border-radius: 4px;
+    background-color: darkgoldenrod;
   }
   
   #start-button {
@@ -50,3 +59,5 @@
     background-color: #007B9D;
   }
   
+
+  /* Sorry about the color thingies, just need to visualise what I'm moving and changing in the code */

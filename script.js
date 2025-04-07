@@ -18,3 +18,12 @@ window.onload = function() {
     });
   };
   
+
+  function transitionToScene1() {
+    document.getElementById('scene1').style.display = 'none';
+    document.getElementById('scene2').style.display = 'block';
+  }
+  function transitionToScene2() {
+    document.getElementById('scene2').style.display = 'none';
+    document.getElementById('scene3').style.display = 'block';
+  }
