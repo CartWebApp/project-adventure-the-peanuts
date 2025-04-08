@@ -57,20 +57,21 @@
   rid themselves of their white robes and neatly folded it back lovingly back to the closet.</p>
   <!-- Paragraph transition smoothly -->
   <p>"Hey (name) get home safely!" Your peer says to you with their uptmost sincerity before heading out the doors like the rest.</p>
-  <button class="Choice" onclick="transitionToScene3A()">"I will, thanks for your concern! You too!"</button>
-  <button class="Choice" onclick="transitionToScene3B()">"Don't worry about me."</button>
-  <button class="Choice" onclick="transitionToScene3C()">"..."</button>
+  <!-- <button class="Choice" onclick="transitionToScene3()">"I will, thanks for your concern! You too!"</button> -->
+  <button class="Choice" onclick="makeChoice('I will, thanks for your concern! You too!')">"I will, thanks for your concern! You too!"</button>
+  <button class="Choice" onclick="transitionToScene3A()">"Don't worry about me."</button>
+  <button class="Choice" onclick="transitionToScene3B()">"..."</button>
 </div>
 
-<div id="scene3A" style="display:none;">
+<div id="scene3" style="display:none;">
   <p>Your peer smiles at your concern and response, before giving you a wave and heading off into the night. You felt a slight enlated sense of happiness.</p>
   <button class="Continue" onclick="transitionToScene4()">Continue</button>
 </div>
-<div id="scene3B" style="display:none;">
+<div id="scene3A" style="display:none;">
   <p>Your peer looks at you with a bit of a strained smile before nodding, and heading off into the night. You felt slight dip in your mood, you felt annoyed.</p>
   <button class="Continue" onclick="transitionToScene4()">Continue</button>
 </div>
-<div id="scene3C" style="display:none;">
+<div id="scene3B" style="display:none;">
   <p>Your peer stares at you as their smile drops; giving one last wave and a 'goodbye' before heading off into the night. You felt a sense of guilt in you, you feel uncomfortable.</p>
   <button class="Continue" onclick="transitionToScene4()">Continue</button>
 </div>

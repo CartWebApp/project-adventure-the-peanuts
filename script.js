@@ -17,8 +17,43 @@ window.onload = function() {
       }, 1000); // Delay should match the fade-out duration (1s)
     });
   };
-  
 
+// choices
+  let gameState = {
+    playerName: "",
+    currentScene: "coverScreen",
+    choicesMade: []
+  };
+  function makeChoice(choiceText) {
+    gameState.choicesMade.push(choiceText);
+    console.log("Choice made:", choiceText);
+  }
+  function transitionToScene(sceneId) {
+    const scenes = document.querySelectorAll('.scene');
+    scenes.forEach(scene => scene.style.display = 'none');
+
+  const newScene = document.getElementById(sceneId);
+  newScene.style.display = 'block';
+
+  gameState.currentScene = sceneId;
+  }
+
+// saving the game progress
+  if (localStorage.getItem('gameState')) {
+    gameState = JSON.parse(localStorage.getItem('gameState'));
+    loadGameState();
+  }
+  function loadGameState() {
+    transitionToScene(gameState.currentScene);
+    document.getElementById('player-name').value = gameState.playerName;
+  }
+
+  function saveGameState() {
+    localStorage.setItem('gameState', JSON.stringify(gameState));
+  }
+
+
+// transitions
   function transitionToScene1() {
     document.getElementById('scene1').style.display = 'none';
     document.getElementById('scene2').style.display = 'block';
