@@ -1,63 +1,44 @@
-/* Cover Screen */
-#cover-screen {
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    height: 100vh;
-    opacity: 1;
-    transition: opacity 1s ease-in-out; /* Fade-out effect */
-    background-color: red;
-  }
-  
-  #cover-screen img {
-    width: 100%;
-    height: auto;
-    max-height: 80vh; /* Adjust image height */
-    object-fit: cover;
-    background-color: #15ff00;
-    
-  }
-  
-  #cover-screen h1 {
-    font-size: 2.5em;
-    margin-top: -50px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
-    background-color: rgb(147, 0, 226);
-  }
-  
-  /* Name Screen */
-  #name-screen {
-    text-align: center;
-    padding: 20px;
-    display: none; /* Hidden initially */
-    background-color: rgb(155, 187, 24);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  
-  #name-screen input {
-    padding: 10px;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    background-color: darkgoldenrod;
-  }
-  
-  #start-button {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  #start-button:hover {
-    background-color: #007B9D;
-  }
-  
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Gotham Rounded;
+}
 
-  /* Sorry about the color thingies, just need to visualise what I'm moving and changing in the code */
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #333;
+}
+
+.container {
+  width: 800px;
+  max-width: 80%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: hsl(200, 100%, 50%);
+  border: 1px solid hsl(200, 100%, 30%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+}
+
+.btn:hover {
+  border-color: black;
+}
