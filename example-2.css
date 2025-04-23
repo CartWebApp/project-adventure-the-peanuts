@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+  }
+  
+  #scene {
+    width: 100%;
+    height: 100%;
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  /* Character Image */
+  #character {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    height: 80%;
+    z-index: 2;
+  }
+  
+  /* Label */
+  #label {
+    position: absolute;
+    bottom: 35%;
+    right: 0;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    z-index: 3;
+  }
+  
+  /* Dialogue Bar */
+  #dialogue-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 33%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Next Button */
+  #next-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
+  

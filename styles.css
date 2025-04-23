@@ -1,60 +1,60 @@
 /* Cover Screen */
 #cover-screen {
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    height: 100vh;
-    opacity: 1;
-    transition: opacity 1s ease-in-out; /* Fade-out effect */
-    background-color: red;
-  }
-  
-  #cover-screen img {
-    width: 100%;
-    height: auto;
-    max-height: 80vh; /* Adjust image height */
-    object-fit: cover;
-    background-color: #15ff00;
-    
-  }
-  
-  #cover-screen h1 {
-    font-size: 2.5em;
-    margin-top: -50px;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
-    background-color: rgb(147, 0, 226);
-  }
-  
-  /* Name Screen */
-  #name-screen {
-    text-align: center;
-    padding: 20px;
-    display: none; /* Hidden initially */
-    background-color: rgb(155, 187, 24);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  
-  #name-screen input {
-    padding: 10px;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    background-color: darkgoldenrod;
-  }
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  height: 100vh;
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* Fade-out effect */
+  background-color: red;
+}
 
+#cover-screen img {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* Adjust image height */
+  object-fit: cover;
+  background-color: #15ff00;
   
-  
-  .scene {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    display: none;
-  }
-  
-  #cover-screen,
-  #name-screen,
-  .scene {
-    transition: opacity 0.5s ease-in-out;
-  }
+}
+
+#cover-screen h1 {
+  font-size: 2.5em;
+  margin-top: -50px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
+  background-color: rgb(147, 0, 226);
+}
+
+/* Name Screen */
+#name-screen {
+  text-align: center;
+  padding: 20px;
+  display: none; /* Hidden initially */
+  background-color: rgb(155, 187, 24);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#name-screen input {
+  padding: 10px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  background-color: darkgoldenrod;
+}
+
+
+
+.scene {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
+}
+
+#cover-screen,
+#name-screen,
+.scene {
+  transition: opacity 0.5s ease-in-out;
+}
