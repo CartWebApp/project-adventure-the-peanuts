@@ -3,20 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="styles.css" rel="stylesheet">
-  <script defer src="script.js"></script>
-  <title>Text Adventure</title>
+  <title>Legally Blonde</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div id="text">Text</div>
-    <div id="option-buttons" class="btn-grid">
-      <button class="btn">Option 1</button>
-      <button class="btn">Option 2</button>
-      <button class="btn">Option 3</button>
-      <button class="btn">Option 4</button>
-    </div>
-  </div>
+
+<!-- Cover Screen -->
+<div id="cover-screen">
+  <img src="images/placeholder.jpg" alt="Game Cover" id="cover-image" />
+  <h1>Title</h1>
+</div>
+
+<!-- Name Input Screen -->
+<div id="name-screen" style="display:none;">
+  <label for="player-name">Enter your name:< /label>
+  <input type="text" id="player-name" placeholder="Your name here" />
+  <button id="start-button" onclick="transitionToScene1()">Start Game</button>
+</div>
+
+<div id="scene1" style="display:none;">
+  <h2>Chapter 1: Seven Days of Creation</h2>
+  <!-- Fade out from black^ then smooths to the next scene -->
+    <p>The choir sings the praise of the Holy Lord, the crowd with joyous and beaming faces
+      at the sight of the young choir who stand on the stage. You stand amongst the fellow choir members; your voice trembling along with their confidence.
+      You had just joined not too long ago, your voice hadn't well adjusted yet to complex singing and language.</p>
+  <!-- Paragraph transition smoothly -->
+    <p>But despite your crude performance, you managed to keep the faces of the listeners happy.</p>
+  <!-- Paragraph transition smoothly with a button being added in-->
+    <button class="Continue" onclick="transitionToScene2()">Continue</button>
+</div>
+
+<div id="scene2" style="display: none;">
+  <p>The sunlight dims as the night begans to inch closer to your lovely city. You watch as people go through the chapel's doors
+    to head home before anything icky can occur during a nightly return. You find yourself standing, amongst your fellow peers who
+  rid themselves of their white robes and neatly folded it back lovingly back to the closet.</p>
+  <!-- Paragraph transition smoothly -->
+  <p>"Hey (name) get home safely!" Your peer says to you with their uptmost sincerity before heading out the doors like the rest.</p>
+  <!-- <button class="Choice" onclick="transitionToScene3()">"I will, thanks for your concern! You too!"</button> -->
+  <button class="Choice" onclick="makeChoice('I will, thanks for your concern! You too!')">"I will, thanks for your concern! You too!"</button>
+  <button class="Choice" onclick="transitionToScene3A()">"Don't worry about me."</button>
+  <button class="Choice" onclick="transitionToScene3B()">"..."</button>
+</div>
+
+<div id="scene3" style="display:none;">
+  <p>Your peer smiles at your concern and response, before giving you a wave and heading off into the night. You felt a slight enlated sense of happiness.</p>
+  <button class="Continue" onclick="transitionToScene4()">Continue</button>
+</div>
+<div id="scene3A" style="display:none;">
+  <p>Your peer looks at you with a bit of a strained smile before nodding, and heading off into the night. You felt slight dip in your mood, you felt annoyed.</p>
+  <button class="Continue" onclick="transitionToScene4()">Continue</button>
+</div>
+<div id="scene3B" style="display:none;">
+  <p>Your peer stares at you as their smile drops; giving one last wave and a 'goodbye' before heading off into the night. You felt a sense of guilt in you, you feel uncomfortable.</p>
+  <button class="Continue" onclick="transitionToScene4()">Continue</button>
+</div>
+
+<div id="scene4" style="display: none;">
+  <p>You waited until everyone was gone to do your duties. As much as you were a newcomer, you had a job and that was small things like be the one to clean up the choir room before leaving.
+    It was to instil a sense of "duty" in your place of the hierachy; as of now? Bottomfeeder.
+  </p>
+  <!-- Paragraph transition smoothly -->
+   <p>You estimated that it took you at least one quarter of the moon's cycle to finish cleaning up. As much as the choir members were good, you knew there were a few individuals who were...a bit laxed
+    on the rules of the Holy Church. 'Nevermind them,' you thought, 'At least the place looks sparkling clean.'
+   </p>
+   <!-- Paragraph transition smoothly -->
+   <p>Afterwards, you trailed down the corridors that reaked of incense and old holy water, and the carpets beneath your feet that itched</p>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
