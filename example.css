@@ -59,3 +59,10 @@ body {
     padding: 20px;
     border-radius: 10px;
   }
+
+  #start-screen {
+    background-image: url('images/placeholder.jpg'); /*change this with custom game cover*/
+    background-size: cover;
+    background-position: center;
+  }
+  
