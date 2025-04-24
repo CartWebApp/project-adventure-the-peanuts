@@ -11,6 +11,7 @@
     font-family: 'Georgia', serif;
   }
   
+  /* this needs to be adjusted so that the image is not stretched all the way */
   #scene {
     width: 100%;
     height: 100%;
@@ -23,22 +24,23 @@
   /* Character Image */
   #character {
     position: absolute;
-    bottom: 0;
+    bottom: 30%;
     left: 5%;
-    height: 80%;
+    height: 70%;
     z-index: 2;
   }
   
   /* Label */
   #label {
     position: absolute;
-    bottom: 35%;
+    bottom: 30%;
     right: 0;
     background-color: black;
     color: white;
-    padding: 10px 20px;
-    font-size: 1.1rem;
+    padding: 15px 25px;
+    font-size: 1.3rem;
     z-index: 3;
+    
   }
   
   /* Dialogue Bar */
@@ -46,13 +48,13 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 33%;
+    height: 30.35%;
     background-color: black;
     color: white;
     padding: 20px;
     font-size: 1.2rem;
     display: flex;
-    align-items: center;
+    align-items: row;
   }
   
   /* Next Button */
