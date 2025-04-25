@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Pagan</title>
   <link rel="icon" href="images/icon.png">
-  <link rel="stylesheet" href="example.css" />
+  <link rel="stylesheet" href="example.css">
+  <link rel="stylesheet" href="example-2.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <!-- <audio id="bg-music" loop>
-    <source src="your-soundtrack.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio> -->
-
-  <!-- Start Screen -->
+  <!-- start screen -->
   <div id="start-screen" class="screen active">
     <h1>The Pagan</h1>
     <button id="start-btn">Start Game</button>
   </div>
 
-  <!-- Name Input Screen -->
+  <!-- name input screen -->
   <div id="name-screen" class="screen">
     <h2>What is your name?</h2>
     <input type="text" id="player-name" placeholder="Enter your name" />
     <button id="submit-name">Enter</button>
   </div>
 
-  <!-- Game Screen -->
+  <!-- game screen -->
   <div id="game-screen" class="screen">
     <img id="location-img" src="" alt="Location" />
     <div id="text-box">
@@ -35,7 +35,12 @@
     <div id="choices"></div>
   </div>
 
+  <!-- <audio id="bg-music" loop>
+    <source src="your-soundtrack.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio> -->
 
+  
   <script src="example.js"></script>
 </body>
 </html>

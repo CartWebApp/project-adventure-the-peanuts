@@ -10,22 +10,28 @@ const locationImg = document.getElementById('location-img');
 
 let playerName = "";
 
+function showScreen(newScreen) {
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.classList.remove('active');
+  });
+  newScreen.classList.add('active');
+}
+
 startBtn.addEventListener('click', () => {
-  startScreen.classList.remove('active');
-  nameScreen.classList.add('active');
+  showScreen(nameScreen);
 });
 
 submitNameBtn.addEventListener('click', () => {
   playerName = playerNameInput.value.trim();
   if (playerName !== "") {
-    nameScreen.classList.remove('active');
-    gameScreen.classList.add('active');
+    showScreen(gameScreen);
     startGame();
   }
 });
 
 function startGame() {
   bgMusic.play();
-  locationImg.src = "location1.jpg"; // You can add your own image file here
+  locationImg.src = "location1.jpg"; // Replace with your actual image
   gameText.innerText = `Welcome, ${playerName}. You are a young choir member of the church. You had just joined the juniors to sing in front of the saints for the first time. Your voice blended in well with the others as you all vocalized the angelic songs of Heaven.`;
 }
+
