@@ -35,3 +35,4 @@ function startGame() {
   gameText.innerText = `Welcome, ${playerName}. You are a young choir member of the church. You had just joined the juniors to sing in front of the saints for the first time. Your voice blended in well with the others as you all vocalized the angelic songs of Heaven.`;
 }
 
+

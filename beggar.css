@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+  }
+  
+  /* this needs to be adjusted so that the image is not stretched all the way */
+  #scene {
+    width: 100%;
+    height: 100%;
+    background-image: url('images/bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  /* character image */
+  #character {
+    position: absolute;
+    bottom: 25%;
+    height: 70%;
+    z-index: 2;
+  }
+  
+  /* label */
+  #label {
+    position: absolute;
+    bottom: 25%;
+    right: 0;
+    background-color: black;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1.3rem;
+    z-index: 3;
+    
+  }
+  
+  /* dialogue Bar */
+  #dialogue-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: row;
+  }
+  
+  /* next button */
+  #next-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
+
+
+
+   

@@ -21,19 +21,19 @@
     position: relative;
   }
   
-  /* Character Image */
+  /* character image */
   #character {
     position: absolute;
-    bottom: 30%;
+    bottom: 25%;
     left: 5%;
     height: 70%;
     z-index: 2;
   }
   
-  /* Label */
+  /* label */
   #label {
     position: absolute;
-    bottom: 30%;
+    bottom: 25%;
     right: 0;
     background-color: black;
     color: white;
@@ -43,12 +43,12 @@
     
   }
   
-  /* Dialogue Bar */
+  /* dialogue Bar */
   #dialogue-bar {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 30.35%;
+    height: 25%;
     background-color: black;
     color: white;
     padding: 20px;
@@ -57,7 +57,7 @@
     align-items: row;
   }
   
-  /* Next Button */
+  /* next button */
   #next-btn {
     position: absolute;
     bottom: 10px;
