@@ -40,8 +40,15 @@ heartImg.src = "images/heart.png";
 const arrowImg = new Image();
 arrowImg.src = "images/arrow.png";
 
+const swordImg = new Image();
+arrowImg.src = "images/sword.png";
+
 const arrows = [
-  { x: 300, y: 50, width: 20, height: 10, speed: 2 }
+  { x: 300, y: 50, width: 60, height: 60, speed: 4 }
+];
+
+const sword = [
+  { x: 300, y: 50, width: 60, height: 60, speed: 4 }
 ];
 
 // Game loop functions
