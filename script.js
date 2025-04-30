@@ -1,48 +1,64 @@
+// Start screen to name screen
 const startBtn = document.getElementById('start-btn');
-const nameScreen = document.getElementById('name-screen');
-const startScreen = document.getElementById('start-screen');
-const gameScreen = document.getElementById('game-screen');
-const submitNameBtn = document.getElementById('submit-name');
-const bgMusic = document.getElementById('bg-music');
-const playerNameInput = document.getElementById('player-name');
-const gameText = document.getElementById('game-text');
-const locationImg = document.getElementById('location-img');
-
-let playerName = "";
-
-function showScreen(newScreen) {
-  document.querySelectorAll('.screen').forEach(screen => {
-    screen.classList.remove('active');
+if (startBtn) {
+  startBtn.addEventListener('click', () => {
+    document.getElementById('start-screen').classList.remove('active');
+    document.getElementById('name-screen').classList.add('active');
   });
-  newScreen.classList.add('active');
 }
 
-startBtn.addEventListener('click', () => {
-  showScreen(nameScreen);
-});
+// Name screen to confirm screen
+const nameSubmitBtn = document.getElementById('name-submit-btn');
+if (nameSubmitBtn) {
+  nameSubmitBtn.addEventListener('click', () => {
+    const nameInput = document.getElementById('player-name');
+    const playerName = nameInput.value.trim();
 
-submitNameBtn.addEventListener('click', () => {
-  playerName = playerNameInput.value.trim();
-  if (playerName !== "") {
-    showScreen(gameScreen);
-    startGame();
-  }
-});
+    if (playerName) {
+      document.getElementById('name-screen').classList.remove('active');
+      const confirmScreen = document.getElementById('confirm-screen');
+      const confirmMsg = document.getElementById('confirm-message');
+      confirmMsg.textContent = `Are you ready, ${playerName}?`;
+      confirmScreen.classList.add('active');
 
-function startGame() {
-  bgMusic.play();
-  locationImg.src = "location1.jpg"; // Replace with your actual image
-  gameText.innerText = `Welcome, ${playerName}. You are a young choir member of the church. You had just joined the juniors to sing in front of the saints for the first time. Your voice blended in well with the others as you all vocalized the angelic songs of Heaven.`;
+      // Save name in case needed later
+      confirmScreen.dataset.playerName = playerName;
+    } else {
+      
+    }
+  });
 }
 
-startBtn.addEventListener('click', () => {
-  showScreen(nameScreen);
-});
+// Confirm button logic (and movement)
+const confirmBtn = document.getElementById('confirm-btn');
+if (confirmBtn) {
+  confirmBtn.addEventListener('click', () => {
+    const playerName = document.getElementById('confirm-screen').dataset.playerName || 'Player';
+    window.location.href = `startingscene.html?name=${encodeURIComponent(playerName)}`;
+  });
 
-submitNameBtn.addEventListener('click', () => {
-  playerName = playerNameInput.value.trim();
-  if (playerName !== "") {
-    // Redirect to the scene page and pass the player's name in the URL
-    window.location.href = `scene.html?name=${encodeURIComponent(playerName)}`;
-  }
-});
+  // Make the button "run away" on hover
+  let moveButton = true; // To control the movement
+
+  confirmBtn.addEventListener('mouseover', () => {
+    if (!moveButton) return; // Don't move the button if time's up
+
+    const btn = confirmBtn;
+    const parent = btn.parentElement;
+
+    const maxX = parent.clientWidth - btn.offsetWidth;
+    const maxY = parent.clientHeight - btn.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    btn.style.position = 'absolute';
+    btn.style.left = `${randomX}px`;
+    btn.style.top = `${randomY}px`;
+  });
+
+  // Stop the button after 10 seconds
+  setTimeout(() => {
+    moveButton = false; // Stop the movement
+  }, 10000); // 10 seconds
+}

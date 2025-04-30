@@ -6,7 +6,6 @@
   <title>The Pagan</title>
   <link rel="icon" href="images/icon.png">
   <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
   <!-- start screen -->
@@ -19,12 +18,16 @@
   <div id="name-screen" class="screen">
     <h2>What is your name?</h2>
     <input type="text" id="player-name" placeholder="Enter your name" />
-    <a href="startingscene.html" id="start-btn">
-      <button>Start Game</button>
-    </a>
+    <button id="name-submit-btn">Submit</button>
   </div>
 
-  <!-- game screen -->
+  <!-- confirm screen -->
+  <div id="confirm-screen" class="screen">
+    <h2 id="confirm-message"></h2>
+    <button id="confirm-btn">Yes, I'm Ready!</button>
+  </div>
+
+  <!-- game screen (not visible yet) -->
   <div id="game-screen" class="screen">
     <img id="location-img" src="" alt="Location" />
     <div id="text-box">
@@ -33,8 +36,6 @@
     <div id="choices"></div>
   </div>
 
-  
   <script src="script.js"></script>
 </body>
 </html>
-
