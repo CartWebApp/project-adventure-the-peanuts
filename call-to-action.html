@@ -1,9 +1,28 @@
-const dialogueLines = [
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Pagan</title>
+  <link rel="icon" href="images/icon.png">
+  <link rel="stylesheet" href="call-to-action.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="scene"></div>
+
+    <div id="dialogue-bar">
+      <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
+      <button id="next-btn">▶</button>
+    </div>
+  </div>
+<script>
+    const dialogueLines = [
   "You are a young choir member of the church. You had just joined the juniors to sing in front of the saints for the first time. Your voice blended in well with the others as you all vocalized the angelic songs of Heaven.",
   "After the last note, everyone inside the chapel clapped their hands in praise at your singing, some enthusiastic, and some less than excited. You watched your fellow choir members smile and stand for the saint audience like statues waiting for praise. You follow their actions; smiling and standing all the same.",
   "As the sun begins to descend behind the sand white buildings, your choir members wave and bid you good night.",
-  "You tuck away your milk-white robes inside a small chamber like many before you.",
-  "Wiping away the dust that fell on your folded robe, you decide to leave the church and head home like the many others."
+  "As the sun begins to descend behind the sand white buildings, as your choir members wave and bid you good nights and farewells, you tuck away your milk white robes inside a small chamber like many before you. Wiping away the dust that fell on your folded robe, you then decided to leave the church and head home like the many others.",
+  "As you see the chapel doors right in front of you, you feel a sense of relief and dread. Relief because you can finally see your old parents again after a hot day at church; but also, dread, for the streets were dangerous at night if you don’t follow the lit up path. As your feet carry you inches closer to the grand doors, a thought finally punctures your memory:"
 ];
 
   let currentLine = 0;
@@ -63,3 +82,7 @@ const dialogueLines = [
 
   showNextLine(); // show first line
 
+
+</script>
+</body>
+</html>
