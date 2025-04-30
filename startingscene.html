@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Starting Scene</title>
+  <link rel="stylesheet" href="startingscene.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="scene"></div>
+
+    <div id="dialogue-bar">
+      <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
+      <button id="next-btn">▶</button>
+    </div>
+  </div>
+
+  <script>
+    // Get player name from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const playerName = urlParams.get('name'); // Retrieve the 'name' parameter
+
+    if (playerName) {
+      document.getElementById('player-name').textContent = playerName; // Display the name
+    }
+
+    // Sample dialogue functionality
+    const dialogueLines = [
+      "The choir sings the praise of the Holy Lord.",
+      "The crowd watches with joyous and beaming faces.",
+      "You stand among the choir, your voice trembling.",
+      "You had just joined. Your voice is not yet steady."
+    ];
+
+    let currentLine = 0;
+    let charIndex = 0;
+    let typing = false;
+    const dialogueText = document.getElementById("dialogue-text");
+    const nextBtn = document.getElementById("next-btn");
+
+    // Function to type the dialogue one character at a time
+    function typeLine(line) {
+      typing = true;
+      dialogueText.textContent = "";
+      charIndex = 0;
+
+      const interval = setInterval(() => {
+        if (charIndex < line.length) {
+          dialogueText.textContent += line.charAt(charIndex);
+          charIndex++;
+        } else {
+          clearInterval(interval);
+          typing = false;
+        }
+      }, 30);
+    }
+
+    // Function to move to the next line in the dialogue
+    function showNextLine() {
+      if (typing) return; // Don't show the next line if typing is in progress
+
+      if (currentLine < dialogueLines.length) {
+        typeLine(dialogueLines[currentLine]);
+        currentLine++;
+      } else {
+        dialogueText.textContent = "End of scene.";
+        nextBtn.disabled = true; // Disable the button when the scene ends
+      }
+    }
+
+    nextBtn.addEventListener("click", showNextLine); // Move to the next dialogue when the button is clicked
+
+    showNextLine(); // Start the scene with the first line
+  </script>
+
+</body>
+</html>

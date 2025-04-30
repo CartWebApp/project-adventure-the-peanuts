@@ -1,60 +1,77 @@
-/* Cover Screen */
-#cover-screen {
-  text-align: center;
-  padding: 20px;
+body {
+  margin: 0;
+  background-color: #1e1e1e;
+  color: #f5f5dc;
+  overflow: hidden;
   position: relative;
+}
+
+.screen {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
-  opacity: 1;
-  transition: opacity 1s ease-in-out; /* Fade-out effect */
-  background-color: red;
-}
-
-#cover-screen img {
   width: 100%;
-  height: auto;
-  max-height: 80vh; /* Adjust image height */
-  object-fit: cover;
-  background-color: #15ff00;
-  
-}
-
-#cover-screen h1 {
-  font-size: 2.5em;
-  margin-top: -50px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for readability */
-  background-color: rgb(147, 0, 226);
-}
-
-/* Name Screen */
-#name-screen {
+  transition: opacity 1.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 20px;
-  display: none; /* Hidden initially */
-  background-color: rgb(155, 187, 24);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  z-index: 0;
 }
 
-#name-screen input {
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #610c04;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+input[type="text"] {
   padding: 10px;
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  background-color: darkgoldenrod;
+  font-size: 1rem;
+  margin-top: 20px;
 }
 
-
-
-.scene {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  display: none;
+#game-screen {
+  flex-direction: column;
 }
 
-#cover-screen,
-#name-screen,
-.scene {
-  transition: opacity 0.5s ease-in-out;
+#location-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#text-box {
+  position: absolute;
+  bottom: 10%;
+  width: 80%;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#start-screen {
+  background-image: url('images/placeholder.jpg');
+  background-size: cover;
+  background-position: center;
 }
