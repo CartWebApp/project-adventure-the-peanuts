@@ -139,7 +139,7 @@
 
   #priest-normal {
     position: absolute;
-    bottom: 270px;
+    bottom: 275px;
     left: 50%;
     transform: translateX(-50%) scale(1);
     opacity: 0;
