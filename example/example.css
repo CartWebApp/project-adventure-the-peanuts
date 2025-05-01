@@ -6,7 +6,6 @@
   height: 100vh;
   opacity: 1;
   transition: opacity 1s ease-in-out; /* Fade-out effect */
-  background-color: red;
 }
 
 #cover-screen img {
@@ -14,8 +13,6 @@
   height: auto;
   max-height: 80vh; /* Adjust image height */
   object-fit: cover;
-  background-color: #15ff00;
-  
 }
 
 #cover-screen h1 {
@@ -31,7 +28,6 @@
   text-align: center;
   padding: 20px;
   display: none; /* Hidden initially */
-  background-color: rgb(155, 187, 24);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -42,7 +38,6 @@
   font-size: 1.2em;
   margin-bottom: 20px;
   border-radius: 4px;
-  background-color: darkgoldenrod;
 }
 
 
