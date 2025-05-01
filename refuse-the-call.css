@@ -165,3 +165,13 @@
     transform: scaleX(1); /* Flip to face left */
   }
   
+  #to-be-continued {
+    display: none;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  
+  #to-be-continued.show {
+    display: block;
+    opacity: 1;
+  }

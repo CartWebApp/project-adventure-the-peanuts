@@ -26,19 +26,22 @@
   "You slam through the doors and you watch the Holy Father jump in surprise, dropping the dagger on the ground and hearing it clatter against the hard flooring. You watched his face snarl to himself like he was angry at himself for allowing someone like YOU to come in so quickly.",
   "“I thought I…” he muttered to himself before he riled up again, “What are you doing here!? Why are you here!?”",
   "“You…killed them…!” You said with a quiver.",
-  "“You saw nothing, you foolish child!” The Holy Father Francias said before hurriedly picking up the dagger, almost dropping the dagger a few swipes in as his hands shook with adrenaline. He stood up, annoyed by your foolish defiance. Nearing you with the clear intent as you stumbled back.",
+  "“You saw nothing, you foolish child!” The Holy Father said before hurriedly picking up the dagger, almost dropping the dagger a few swipes in as his hands shook with adrenaline. He stood up, annoyed by your foolish defiance. Nearing you with the clear intent as you stumbled back.",
   "“You’re a sinner!” You shouted.",
-  "“Shut up!” the high father shouted in rebuttal. The high father raised his dagger.",
+  "“Shut up!” The Father shouted in rebuttal. The Father raised his dagger.",
   "But the sound of walking closer froze the high father in his own place. You could hear the muffles behind the doors: “What was that?” “A ghoul?” “Impossible.” “Exorcise it.”",
-  "You watch as the father rushes past you to the doors and quickly opens the double doors. Addressing the outsiders.",
-  "“Holy Father Francias, we heard something down here,” one holyman says who you recognise as Cardinal Andrew, “Is everything alright?” ",
-  "“Yes-yes-yes-everything’s fine,” the Holy Father replies politely and too fast, tersely gripping the doors that you can see the old bones of his hands, “Just…the cats yowling again…”",
+  "You watch as the Father rushes past you to the doors and quickly opens the double doors. Addressing the outsiders.",
+  "“Holy Father, we heard something down here,” one holyman says who you recognize as Cardinal Andrew, “Is everything alright?” ",
+  "“Yes--yes--yes--everything’s fine,” the Holy Father replies politely and too fast, tersely gripping the doors that you can see the old bones of his hands, “Just…just the cats yowling again…”",
   "You could sense the skepticism of the holymen behind the doors but they didn’t say anything.",
-  "Cardinal Andrew hums before making a sound of agreement and saying, “I see, we were worried, Holy Father; we are glad that you are safe. Please, allow us to escort you when you are finished with your buisness.”",
+  "Cardinal Andrew hummed, before making a sound of agreement and saying, “I see, we were worried, Holy Father; we are glad that you are safe. Please, allow us to escort you when you are finished with your business.”",
   "Then they walk away, the footsteps growing distant and faded then. The holy father shuts the doors and he glares at you.",
   "“God graces your pitiful soul with mercy,” he sneers before walking past you, headed to the marble basin in the corner; using the soap lather to rid his hand of his sin.",
-  "",
-  "",
+  "“God will make use of you,” the Holy Father says, turning to you and shoving the dagger right back beneath his robes to which he dones new white ones.",
+  "“What do you mean?” You said, watching him watch you.",
+  "He looks at you as if you were a lesser. But he rolls his eyes and speaks, “I should put you to execution...”",
+  "“However, I might have use for you,” he said, “By the sight of God, you will return to tomorrow...”",
+  "He waves at the door and speaks quietly, “Hurry now, before I change my mind.”",
 ];
 
   let currentLine = 0;
@@ -109,14 +112,19 @@ if (currentLine === 13) {
   priestNormal.classList.add("move-right");
 }
 
-    typeLine(dialogueLines[currentLine]);
+typeLine(dialogueLines[currentLine]);
     currentLine++;
   } else {
-    dialogueText.textContent = "End of scene.";
+    // When dialogue is finished, show "To Be Continued"
+    dialogueText.textContent = "To be Continued.";
     nextBtn.disabled = true;
+
+    // Wait for 2 seconds before redirecting to the next page
+    setTimeout(() => {
+      window.location.href = "startingscene.html"; // Redirect to another page
+    }, 2000); // 2 seconds delay
   }
 }
-
 
   function startBlinkTimer() {
     blinkTimeout = setTimeout(() => {

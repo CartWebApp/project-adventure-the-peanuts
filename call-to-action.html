@@ -18,11 +18,22 @@
   </div>
 <script>
     const dialogueLines = [
-  "You are a young choir member of the church. You had just joined the juniors to sing in front of the saints for the first time. Your voice blended in well with the others as you all vocalized the angelic songs of Heaven.",
-  "After the last note, everyone inside the chapel clapped their hands in praise at your singing, some enthusiastic, and some less than excited. You watched your fellow choir members smile and stand for the saint audience like statues waiting for praise. You follow their actions; smiling and standing all the same.",
-  "As the sun begins to descend behind the sand white buildings, your choir members wave and bid you good night.",
-  "As the sun begins to descend behind the sand white buildings, as your choir members wave and bid you good nights and farewells, you tuck away your milk white robes inside a small chamber like many before you. Wiping away the dust that fell on your folded robe, you then decided to leave the church and head home like the many others.",
-  "As you see the chapel doors right in front of you, you feel a sense of relief and dread. Relief because you can finally see your old parents again after a hot day at church; but also, dread, for the streets were dangerous at night if you don’t follow the lit up path. As your feet carry you inches closer to the grand doors, a thought finally punctures your memory:"
+  "You forgot to say your night prayers at the inner altar! Don’t forget what mama and papa said!",
+  "“Well, carp fish,” you muttered to yourself before rush—tiptoeing back inside the corridors down to the altar where all were welcomed.",
+  "But as you briskly walked to the altar, you hear two voices arguing in altercation…",
+  "“I know what you did, Father,” the voice growled with no respect, but you knew who exactly “Father” was.",
+  "The Holy Pope.",
+  "“Quiet, Son Thomas,” the Holy Father spat out in a hush like he had some gunk stuck in his throat, “You saw nothing. Dismiss yourself.”",
+  "You closed in, nearing the sound of the argument, against the wall you pressed and listened in…",
+  "“...I won’t grovel again, Father...!” The voice strained, like the mysterious voice was trying to keep their bottle of anger sealed under a cap lid, “I know…I know you approved of the murder of Elizabeth Likena…because she found out you were damning our Lord’s name and celebrating a new numen—”",
+  "“Quiet!” The Holy Father shouted.",
+  "The sudden volume of the voice reeled you back like the force of a hurricane shoving you away in shock. You felt paralysed as if someone threw cold water over you. The keyhole pour light onto you, and you could see the small fight.",
+  "“I will not tolerate any disrespect from you unsightly bunch, peasant,” the Holy Father declared, “...You will have your mouth shut and obedient as you once were…",
+  "“Or else!”",
+  "“No!” The other person, Son Thomas rebutted right back, and from what you could hear, stepped closer to the Holy Father.",
+  "“DISOBEDIENT HEATHEN!” Holy Father roared.",
+  "Your eyes widen as you watch an ornate dagger lift itself high up in the air and like lightning, strike down into the heart of Saint Thomas.",
+  "You gasped in shock like the stony gaze of Medusa turned you into stone. You witness the Holy Father step back, his robes that were was white as limb’s wool become tainted with the purity of a saint.",
 ];
 
   let currentLine = 0;
@@ -52,19 +63,26 @@
   }
 
   function showNextLine() {
-    if (typing) return;
+  if (typing) return;
 
-    clearTimeout(blinkTimeout);
-    nextBtn.classList.remove("blink");
+  clearTimeout(blinkTimeout);
+  nextBtn.classList.remove("blink");
 
-    if (currentLine < dialogueLines.length) {
-      typeLine(dialogueLines[currentLine]);
-      currentLine++;
-    } else {
-      dialogueText.textContent = "End of scene.";
-      nextBtn.disabled = true;
-    }
+  if (currentLine < dialogueLines.length) {
+    typeLine(dialogueLines[currentLine]);
+    currentLine++;
+  } else {
+    dialogueText.textContent = "But you? You burst through the doors.";
+    nextBtn.disabled = true;
+
+    // Wait for 2 seconds before going to the next page
+    setTimeout(() => {
+      window.location.href = "refuse-the-call.html"; // Go to the next page
+    }, 2000); // 2 seconds delay
   }
+}
+
+  
 
   function startBlinkTimer() {
     blinkTimeout = setTimeout(() => {

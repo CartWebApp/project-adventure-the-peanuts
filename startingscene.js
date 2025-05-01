@@ -33,19 +33,25 @@ const dialogueLines = [
   }
 
   function showNextLine() {
-    if (typing) return;
-
-    clearTimeout(blinkTimeout);
-    nextBtn.classList.remove("blink");
-
+    if (typing) return;  // Prevent skipping while typing
+  
     if (currentLine < dialogueLines.length) {
       typeLine(dialogueLines[currentLine]);
       currentLine++;
     } else {
-      dialogueText.textContent = "End of scene.";
+      dialogueText.textContent = "However....";
       nextBtn.disabled = true;
+  
+      // Wait 2 seconds and redirect to scene2.html
+      setTimeout(() => {
+        window.location.href = "call-to-action.html"; // Redirect to the next scene
+      }, 2000); // 2 seconds delay
     }
   }
+  
+  nextBtn.addEventListener("click", showNextLine);
+  
+  showNextLine();
 
   function startBlinkTimer() {
     blinkTimeout = setTimeout(() => {
