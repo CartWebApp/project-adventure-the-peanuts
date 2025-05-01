@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Pagan</title>
+  <link rel="icon" href="images/icon.png">
+  <link rel="stylesheet" href="refuse-the-call.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="scene">
+        <img id="priest" src="images/pope-angered.png" alt="Creepy Holy Father" />
+      </div>
+      
+
+    <div id="dialogue-bar">
+      <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
+      <button id="next-btn">▶</button>
+    </div>
+  </div>
+<script>
+    const dialogueLines = [
+  "You slam through the doors and you watch the Holy Father jump in surprise, dropping the dagger on the ground and hearing it clatter against the hard flooring. You watched his face snarl to himself like he was angry at himself for allowing someone like YOU to come in so quickly.",
+  "“I thought I…” he muttered to himself before he riled up again, “What are you doing here!? Why are you here!?”",
+  "“You…killed them…!” You said with a quiver.",
+  "“You saw nothing, you foolish child!” The Holy Father Francias said before hurriedly picking up the dagger, almost dropping the dagger a few swipes in as his hands shook with adrenaline. He stood up, annoyed by your foolish defiance. Nearing you with the clear intent as you stumbled back.",
+  "“You’re a sinner!” You shouted.",
+  "“Shut up!” the high father shouted in rebuttal. The high father raised his dagger.",
+  "But the sound of walking closer froze the high father in his own place. You could hear the muffles behind the doors: “What was that?” “A ghoul?” “Impossible.” “Exorcise it.”",
+  "You watch as the father rushes past you to the doors and quickly opens the double doors. Addressing the outsiders.",
+  "“Holy Father Francias, we heard something down here,” one holyman says who you recognise as Cardinal Andrew, “Is everything alright?” ",
+  "“Yes-yes-yes-everything’s fine,” the Holy Father replies politely and too fast, tersely gripping the doors that you can see the old bones of his hands, “Just…the cats yowling again…”",
+  "You could sense the skepticism of the holymen behind the doors but they didn’t say anything.",
+  "Cardinal Andrew hums before making a sound of agreement and saying, “I see, we were worried, Holy Father; we are glad that you are safe. Please, allow us to escort you when you are finished with your buisness.”",
+  "Then they walk away, the footsteps growing distant and faded then. The holy father shuts the doors and he glares at you.",
+  "“God graces your pitiful soul with mercy,” he sneers before walking past you, headed to the marble basin in the corner; using the soap lather to rid his hand of his sin.",
+  "",
+  "",
+];
+
+  let currentLine = 0;
+  let charIndex = 0;
+  let typing = false;
+  const dialogueText = document.getElementById("dialogue-text");
+  const nextBtn = document.getElementById("next-btn");
+  let blinkTimeout;
+
+  function typeLine(line) {
+    typing = true;
+    dialogueText.textContent = "";
+    charIndex = 0;
+    clearTimeout(blinkTimeout);
+    nextBtn.classList.remove("blink");
+
+    const interval = setInterval(() => {
+      if (charIndex < line.length) {
+        dialogueText.textContent += line.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(interval);
+        typing = false;
+        startBlinkTimer(); // start blinking countdown after typing finishes
+      }
+    }, 30);
+  }
+
+  function showNextLine() {
+  if (typing) return;
+
+  clearTimeout(blinkTimeout);
+  nextBtn.classList.remove("blink");
+
+  if (currentLine < dialogueLines.length) {
+    // Trigger dark scene and crawling priest at "Shut up!" (line 5)
+    if (currentLine === 5) {
+      const scene = document.getElementById("scene");
+      scene.classList.add("dark-mode");
+      document.getElementById("container").classList.add("shake");
+      document.getElementById("priest").classList.add("crawl");
+
+      const crawlAudio = new Audio("sounds/crawl.mp3");
+      crawlAudio.play();
+    }
+
+    // Switch to no-demon background at line 6
+    if (currentLine === 6) {
+  const scene = document.getElementById("scene");
+
+  // Remove dark styling
+  scene.classList.remove("dark-mode");
+
+  // NOW change the background to your no-demon version
+  scene.style.backgroundImage = "url('images/church-empty-bg.jpg')";
+
+  // Stop shaking
+  document.getElementById("container").classList.remove("shake");
+
+  // Fade out the priest
+  const priest = document.getElementById("priest");
+  priest.style.opacity = "0";
+  priest.style.transition = "opacity 1s ease-out";
+}
+ {
+      const scene = document.getElementById("scene");
+      scene.classList.remove("dark-mode");
+      scene.style.backgroundImage = "url('images/murder2-cropped.jpg')"; // No demon image
+      document.getElementById("container").classList.remove("shake");
+
+      // Optional: fade out the priest image
+      const priest = document.getElementById("priest");
+      priest.style.opacity = "0";
+      priest.style.transition = "opacity 1s ease-out";
+    }
+
+    typeLine(dialogueLines[currentLine]);
+    currentLine++;
+  } else {
+    dialogueText.textContent = "End of scene.";
+    nextBtn.disabled = true;
+  }
+}
+
+
+  function startBlinkTimer() {
+    blinkTimeout = setTimeout(() => {
+      nextBtn.classList.add("blink");
+    }, 5000); // 5 seconds of inactivity
+  }
+
+  nextBtn.addEventListener("click", showNextLine);
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("#next-btn")) {
+      showNextLine();
+    }
+  });
+
+  showNextLine(); // show first line
+
+
+</script>
+</body>
+</html>

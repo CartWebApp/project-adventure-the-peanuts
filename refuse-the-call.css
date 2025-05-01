@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Georgia', serif;
+    background-color: black;
+  }
+  
+  #container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  #scene {
+    flex: 3; /* 75% of the height */
+    background-image: url('images/murder-cropped.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    transition: background-image 1s ease-in-out;
+  }
+  
+  #dialogue-bar {
+    flex: 1; /* 25% of the height */
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  #dialogue-text {
+    max-width: 90%;
+  }
+  
+  #next-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  
+  #dialogue-bar {
+    height: 25%;
+    background-color: black;
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.6;
+  }
+  
+  #dialogue-text {
+    flex: 1;
+    font-family: 'Georgia', serif;
+    margin-right: 20px;
+  }
+  
+  /* Add to your existing CSS */
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+  
+  #next-btn.blink {
+    animation: blink 1s infinite;
+  }
+
+  #scene.dark-mode {
+    background-color: black;
+    background-image: url("images/pope-angered.png"); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    transition: all 1s ease-in-out;
+    filter: brightness(0.4);
+  }
+  
+  #container.shake {
+    animation: shake 0.4s infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 0); }
+    25% { transform: translate(-1px, 2px); }
+    50% { transform: translate(2px, -1px); }
+    75% { transform: translate(-2px, 1px); }
+    100% { transform: translate(1px, -2px); }
+  }
+  
+  #priest {
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0;
+    transition: transform 5s linear, bottom 5s linear, opacity 3s ease-in;
+    z-index: 10;
+  }
+  
+  #priest.crawl {
+    bottom: 70px; /* Adjust this for how close you want him */
+    transform: translateX(-50%) scale(1.2);
+    opacity: 1;
+  }
+  
+  
+  #scene.no-demon {
+    background-image: url("images/murder2-cropped.png"); /* No shadow demon */
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in;
+  }
+  
