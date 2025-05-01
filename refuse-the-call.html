@@ -11,6 +11,8 @@
   <div id="container">
     <div id="scene">
         <img id="priest" src="images/pope-angered.png" alt="Creepy Holy Father" />
+        <img id="priest-normal" src="images/pope.png" alt="Calm Holy Father" />
+
       </div>
       
 
@@ -86,20 +88,25 @@
     // Switch to no-demon background at line 6
     if (currentLine === 6) {
   const scene = document.getElementById("scene");
-
-  // Remove dark overlay
   scene.classList.remove("dark-mode");
-
-  // Set new background image (no demon)
   scene.style.backgroundImage = "url('images/murder2-cropped.png')";
-
-  // Stop screen shake
   document.getElementById("container").classList.remove("shake");
 
-  // Fade out the priest
   const priest = document.getElementById("priest");
   priest.style.opacity = "0";
   priest.style.transition = "opacity 1s ease-out";
+}
+if (currentLine === 8) {
+  const priestNormal = document.getElementById("priest-normal");
+  priestNormal.style.display = "block";
+  priestNormal.classList.add("show", "move-left");
+  priestNormal.classList.remove("move-right");
+}
+
+if (currentLine === 13) {
+  const priestNormal = document.getElementById("priest-normal");
+  priestNormal.classList.remove("move-left");
+  priestNormal.classList.add("move-right");
 }
 
     typeLine(dialogueLines[currentLine]);
