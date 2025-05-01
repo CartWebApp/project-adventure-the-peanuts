@@ -60,5 +60,6 @@ if (confirmBtn) {
   // Stop the button after 10 seconds
   setTimeout(() => {
     moveButton = false; // Stop the movement
-  }, 10000); // 10 seconds
+  }, 5000); // 10 seconds
 }
+
