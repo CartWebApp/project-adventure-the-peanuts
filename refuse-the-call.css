@@ -124,11 +124,3 @@
     opacity: 1;
   }
   
-  
-  #scene.no-demon {
-    background-image: url("images/murder2-cropped.png"); /* No shadow demon */
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1s ease-in;
-  }
-  

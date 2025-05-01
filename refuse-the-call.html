@@ -87,13 +87,13 @@
     if (currentLine === 6) {
   const scene = document.getElementById("scene");
 
-  // Remove dark styling
+  // Remove dark overlay
   scene.classList.remove("dark-mode");
 
-  // NOW change the background to your no-demon version
-  scene.style.backgroundImage = "url('images/church-empty-bg.jpg')";
+  // Set new background image (no demon)
+  scene.style.backgroundImage = "url('images/murder2-cropped.png')";
 
-  // Stop shaking
+  // Stop screen shake
   document.getElementById("container").classList.remove("shake");
 
   // Fade out the priest
@@ -101,17 +101,6 @@
   priest.style.opacity = "0";
   priest.style.transition = "opacity 1s ease-out";
 }
- {
-      const scene = document.getElementById("scene");
-      scene.classList.remove("dark-mode");
-      scene.style.backgroundImage = "url('images/murder2-cropped.jpg')"; // No demon image
-      document.getElementById("container").classList.remove("shake");
-
-      // Optional: fade out the priest image
-      const priest = document.getElementById("priest");
-      priest.style.opacity = "0";
-      priest.style.transition = "opacity 1s ease-out";
-    }
 
     typeLine(dialogueLines[currentLine]);
     currentLine++;
