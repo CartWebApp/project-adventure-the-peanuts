@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Georgia', serif;
+    background-color: rgb(0, 0, 0);
+  }
+  
+  #container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  #scene {
+    flex: 3; /* 75% of the height */
+    background-image: url('../images/outside.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+  
+  #dialogue-bar {
+    flex: 1; /* 25% of the height */
+    background-color: black;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  #dialogue-text {
+    max-width: 90%;
+  }
+  
+  #next-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  
+  #dialogue-bar {
+    height: 25%;
+    background-color: black;
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.6;
+  }
+  
+  #dialogue-text {
+    flex: 1;
+    font-family: 'Georgia', serif;
+    margin-right: 20px;
+  }
+  
+  /* Add to your existing CSS */
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+  
+  #next-btn.blink {
+    animation: blink 1s infinite;
+  }
+  
