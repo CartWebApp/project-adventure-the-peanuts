@@ -71,7 +71,7 @@ input[type="text"] {
 }
 
 #start-screen {
-  background-image: url('images/placeholder.jpg');
+  background-image: url('../images/placeholder.jpg');
   background-size: cover;
   background-position: center;
 }

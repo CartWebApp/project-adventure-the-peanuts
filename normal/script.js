@@ -34,7 +34,7 @@ const confirmBtn = document.getElementById('confirm-btn');
 if (confirmBtn) {
   confirmBtn.addEventListener('click', () => {
     const playerName = document.getElementById('confirm-screen').dataset.playerName || 'Player';
-    window.location.href = `startingscene.html?name=${encodeURIComponent(playerName)}`;
+    window.location.href = `../mentor/startingscene.html?name=${encodeURIComponent(playerName)}`;
   });
 
   // Make the button "run away" on hover
