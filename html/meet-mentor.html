@@ -72,96 +72,46 @@
     typeLine(dialogueLines[currentLine]);
     currentLine++;
   } else {
-    dialogueText.textContent = "You could almost taste home...";
+    dialogueText.textContent = "But you? You burst through the doors.";
     nextBtn.disabled = true;
 
     // Wait for 2 seconds before going to the next page
     setTimeout(() => {
-      window.location.href = "../startingscene.html"; // Go to the next page
+      window.location.href = "refuse-the-call.html"; // Go to the next page
     }, 2000); // 2 seconds delay
   }
 }
 
-function showChoices() {
-  dialogueText.textContent = "Choose:";
-  choicesDiv.style.display = "block"; // Show the choices buttons
-  nextBtn.style.display = "none"; // Hide the next button
-}
-function handleChoice(choice) {
-  choicesDiv.style.display = "none"; // Hide choices
-  nextBtn.style.display = "block"; // Show next button
+  
 
-  if (choice === 'stay quiet') {
-    dialogueText.textContent = "You chose to stay quiet.";
-    setTimeout(showNextLine, 1500);
-  } else if (choice === 'respond back') {
-    dialogueText.textContent = "You responded back warmly.";
-    setTimeout(showNextLine, 1500);
+  function startBlinkTimer() {
+    blinkTimeout = setTimeout(() => {
+      nextBtn.classList.add("blink");
+    }, 5000); // 5 seconds of inactivity
   }
-}
-choice1Btn.addEventListener('click', () => handleChoice('stay quiet'));
-choice2Btn.addEventListener('click', () => handleChoice('respond back'));
-function showNextLine() {
-  if (currentLine < dialogueLines.length) {
-    typeLine(dialogueLines[currentLine]);
-    currentLine++;
-  } else {
-    showChoices(); // Show the choices here
-  }
-}
-function showNextLine() {
-  if (typing) return;
 
-  clearTimeout(blinkTimeout);
-  nextBtn.classList.remove("blink");
+  nextBtn.addEventListener("click", showNextLine);
 
-  if (currentLine < dialogueLines.length) {
-    typeLine(dialogueLines[currentLine]);
-    currentLine++;
-  } else {
-    // This is where the choices show up after the dialogue
-    showChoices(); // Show the choice options
-  }
-}
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("#next-btn")) {
+      showNextLine();
+    }
+  });
 
-function showChoices() {
-  dialogueText.textContent = "Choose:"; // Set the text to indicate the choices
-  choicesDiv.style.display = "block"; // Show the choices buttons
-  nextBtn.style.display = "none"; // Hide the next button
-}
+  const choice1Dialogue = [
+  "You stay quiet, unsure of what to say...",
+  "Your parents look at you with concern.",
+  "They wait patiently.",
+];
 
-function handleChoice(choice) {
-  choicesDiv.style.display = "none"; // Hide choices
-  nextBtn.style.display = "block"; // Show the next button again
-
-  if (choice === 'stay quiet') {
-    dialogueText.textContent = "You chose to stay quiet.";
-    setTimeout(showNextLine, 1500);
-  } else if (choice === 'respond back') {
-    dialogueText.textContent = "You responded back warmly.";
-    setTimeout(showNextLine, 1500);
-  }
-}
-
-function startBlinkTimer() {
-  blinkTimeout = setTimeout(() => {
-    nextBtn.classList.add("blink");
-  }, 5000); // 5 seconds of inactivity
-}
-
-nextBtn.addEventListener("click", showNextLine);
-choice1Btn.addEventListener('click', () => handleChoice('stay quiet'));
-choice2Btn.addEventListener('click', () => handleChoice('respond back'));
-
-document.addEventListener("click", function (e) {
-  if (!e.target.closest("#next-btn")) {
-    showNextLine();
-  }
-});
-
-showNextLine();  // show first line
+const choice2Dialogue = [
+  "You respond confidently.",
+  "Your parents smile proudly.",
+  "They seem relieved to hear your voice.",
+];
 
 
+  showNextLine(); // show first line
 </script>
 </body>
 </html>
