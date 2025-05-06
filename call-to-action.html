@@ -7,16 +7,51 @@
   <link rel="icon" href="images/icon.png">
   <link rel="stylesheet" href="call-to-action.css" />
 </head>
+
+
 <body>
   <div id="container">
     <div id="scene"></div>
 
     <div id="dialogue-bar">
+      <div id="choice-buttons" style="display: none;">
+        <button onclick="makeChoice('freeze')">Freeze</button>
+        <button onclick="makeChoice('run')">Run</button>
+        <button onclick="makeChoice('burst')">Burst Inside</button>
+      </div>
+      
       <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
       <button id="next-btn">▶</button>
     </div>
   </div>
 <script>
+  const scenes = {
+  freeze: [
+    "You froze.",
+    "Your blood ran cold and your limbs locked into place as if the puppetmaster stopped a marinette.",
+    "Your heart began to beat.",
+    "You should get out of here.",
+    "You should get out of here.",
+    "You should get out of here.",
+    "You should get out of here.",
+    "You should-",
+  ],
+  run: [
+    "You jumped.",
+    "Turning on your heel, you ran down the halls of the cathedral.",
+    "You heard the doors oop open right behind you,",
+    "'DON'T TURN BACK'",
+    "'DON'T TURN BACK'",
+    "'DON'T TURN BACK'",
+    "'DON'T TURN BACK'",
+    "'DON'T-'",
+  ],
+  burst: [
+    "You burst through the doors like an avenging angel.",
+    "The Holy Father spun around, the dagger still dripping in his hand.",
+    "“YOU!” he roared. The game had changed."
+  ]
+};
     const dialogueLines = [
   "You forgot to say your night prayers at the inner altar! Don’t forget what mama and papa said!",
   "“Well, carp fish,” you muttered to yourself before rush—tiptoeing back inside the corridors down to the altar where all were welcomed.",
@@ -42,6 +77,8 @@
   const dialogueText = document.getElementById("dialogue-text");
   const nextBtn = document.getElementById("next-btn");
   let blinkTimeout;
+  let currentScene = null; // null means intro
+
 
   function typeLine(line) {
     typing = true;
@@ -59,7 +96,7 @@
         typing = false;
         startBlinkTimer(); // start blinking countdown after typing finishes
       }
-    }, 30);
+    }, 2);
   }
 
   function showNextLine() {
@@ -68,21 +105,59 @@
   clearTimeout(blinkTimeout);
   nextBtn.classList.remove("blink");
 
-  if (currentLine < dialogueLines.length) {
-    typeLine(dialogueLines[currentLine]);
-    currentLine++;
+  if (currentScene === null) {
+    // Intro sequence
+    if (currentLine < dialogueLines.length) {
+      typeLine(dialogueLines[currentLine]);
+      currentLine++;
+    } else {
+      dialogueText.textContent = "What do you do?";
+      nextBtn.style.display = "none";
+      document.getElementById("choice-buttons").style.display = "block";
+    }
   } else {
-    dialogueText.textContent = "But you? You burst through the doors.";
-    nextBtn.disabled = true;
+    // Scene-specific sequence
+    const sceneLines = scenes[currentScene];
 
-    // Wait for 2 seconds before going to the next page
-    setTimeout(() => {
-      window.location.href = "refuse-the-call.html"; // Go to the next page
-    }, 2000); // 2 seconds delay
+if (currentLine < sceneLines.length) {
+  const line = sceneLines[currentLine];
+
+  // Check if we're at the dramatic cutoff line
+  if (currentScene === "freeze" && line === "You should-")  {
+    const sceneDiv = document.getElementById("scene");
+    sceneDiv.classList.remove("murder-cropped.png");
+    sceneDiv.classList.add("murder-cropped.png");
+  }
+
+  typeLine(line);
+  currentLine++;
+} else {
+  dialogueText.textContent = "The scene ends here.";
+  nextBtn.disabled = true;
+}
+
   }
 }
 
-  
+
+function makeChoice(choice) {
+  if (choice === "burst") {
+    window.location.href = "refuse-the-call.html";
+    return;
+  }
+
+  const sceneDiv = document.getElementById("scene");
+  sceneDiv.className = ""; // Remove old classes
+  sceneDiv.classList.add(`${choice}-scene`); // Add new class like freeze-scene, run-scene, etc.
+
+  currentScene = choice;
+  currentLine = 0;
+  document.getElementById("choice-buttons").style.display = "none";
+  nextBtn.style.display = "inline-block";
+  showNextLine();
+}
+
+
 
   function startBlinkTimer() {
     blinkTimeout = setTimeout(() => {
@@ -102,5 +177,6 @@
 
 
 </script>
+
 </body>
 </html>
