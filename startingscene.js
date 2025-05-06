@@ -1,3 +1,9 @@
+// Extract player's name from URL and insert into the dialogue bar
+const params = new URLSearchParams(window.location.search);
+const playerName = params.get('name') || 'Player';
+document.getElementById("player-name").textContent = playerName;
+
+
 const dialogueLines = [
   "You are a young choir member of the church. You had just joined the juniors to sing in front of the saints for the first time. Your voice blended in well with the others as you all vocalized the angelic songs of Heaven.",
   "After the last note, everyone inside the chapel clapped their hands in praise at your singing, some enthusiastic, and some less than excited. You watched your fellow choir members smile and stand for the saint audience like statues waiting for praise. You follow their actions; smiling and standing all the same.",
