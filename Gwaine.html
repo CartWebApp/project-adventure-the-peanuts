@@ -25,6 +25,10 @@
 
   </div>
 <script>
+    const choicesDiv = document.getElementById("choices");
+const choice1Btn = document.getElementById("choice-1");
+const choice2Btn = document.getElementById("choice-2");
+
     const dialogueLines = [
   "You crashed into a hard piece of metal.",
   "Looking up, you find a Templer knight stare down at you silently.", 
@@ -39,7 +43,7 @@
   "“You shall be kept alive, and you shall return to me tomorrow morning. Take them away, Sir Gwaine.”",
   "You felt your arm being tugged roughly back away, watching the Pope stare blankly at you.",
   "You were forced back outside and Sir Gwaine watched you silently.",
-  "You respond:",
+  "__CHOICE_POINT_1__",
   "Sir Gwaine abandoned you there. As much as you wanted to ponder, staying out at nights wasn't a good idea.",
   "You ran into the night, weaving through the eerie streets to the outskirts of the city...",
   "You could almost taste home...",
@@ -47,10 +51,10 @@
   "There, your parents' home stood before you like a parent inviting their open arms at you.",
   "You quickly brushed your clothes neatly and entered inside the home with haste.",
   "“There you are darling,” your mother says with a smile upon your arrival. Then your father reaches out to ruffle your hair and he speaks, “There you are, my child.”",
-  "You respond:  (choose an etheral voice, choose a scary voice, choose to ignore)",
+  "__CHOICE_POINT_2__ ",
   "Head to your room, okay? Must've been a long day,” your parents smiled kindly at you that you couldn't really be angry at them.",
   "You went inside your room, it was a humble room; only a bed, a shrine, a few books, and a few wooden toys crafted by your grandparents.",
-  "You choose:",
+  "__CHOICE_POINT_3__ (choose an etheral voice, choose a scary voice, choose to ignore)",
   "You arose early in the morning, sneaking out of the room, you didn't want to wake up your parents and disturb their sleep.",
   "With the creak of the door, you escaped your parent's home and headed off into the outskirts.",
   "You found the church and you headed inside.",
@@ -60,7 +64,7 @@
   "“Go off now, I await.” The Pope left you alone and you decided to head outside, there was bounded to be some clues.",
   "Minigame:",
   "You found a shed in the outskirts, there were footprints and it seemed to be locked.",
-  "You choose: (forcibly break it or find another way)",
+  "__CHOICE_POINT_4__ (forcibly break it or find another way)",
   "There were dogs inside!",
   "“What are you doing?” You heard a gruff voice behind you.",
   "Looking back, you saw two Templer knights: Sir Gwaine and Sir Newman!",
@@ -69,11 +73,11 @@
   "“I...” you trailed off, watching the knights.",
   "“We should kill you before you--”",
   "“We are NOT killing an innocent civilian!” Sir Newman yelled at Sir Gwaine before looking back at you. “Look, don't tell anyone about this, okay? Keep this between us three?”",
-  "You choose: (agree/truth, or agree/lie and tell the pope anyways)",
+  "__CHOICE_POINT_5__ (agree/truth, or agree/lie and tell the pope anyways)",
   "Sir Newman smiles at your decision while Sir Gwaine looks displeased. But, safely, you were sent off.",
   "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.",
   "“Well?”",
-  "You choose: (tell the truth, or, lie)",
+  "__CHOICE_POINT_6__ (tell the truth, or, lie)",
   "(either way) The Pope summons forth the Templer knights. “Sir Gwaine and Sir Newman are hereby sent to the catacombs for execution.”",
   "Both knights look betrayed at you, like they couldn't believe you did that, but they were forcibly taken away before you could hear them curse you.",
   "“You done yourself well, [user name],” the Pope praised, “Perhaps you are more useful than you look. I shall grant you the honors of the execution.”",
@@ -106,6 +110,7 @@
   const dialogueText = document.getElementById("dialogue-text");
   const nextBtn = document.getElementById("next-btn");
   let blinkTimeout;
+  
 
   function typeLine(line) {
     typing = true;
@@ -125,26 +130,71 @@
       }
     }, 15);
   }
+  const choices = {
+  CHOICE_POINT_1: {
+    text1: "Stay Silent",
+    text2: "Snark",
+    result1: "You stayed silent. The knight looked disappointed.",
+    result2: "“Do you always follow orders?” you asked. The knight didn’t respond."
+  },
+  CHOICE_POINT_2: {
+  text1: "You reassure your parents",
+  text2: "You avoid speaking",
+  result1: "'Don't worry, mama and papa, I just...got a little bit lost.'",
+  result2: "'I'm okay, just tired.'."
+},
+  
+  // Add more as needed...
+};
 
-  function showNextLine() {
+function showNextLine() {
   if (typing) return;
 
   clearTimeout(blinkTimeout);
   nextBtn.classList.remove("blink");
 
-  if (currentLine < dialogueLines.length) {
-    typeLine(dialogueLines[currentLine]);
-    currentLine++;
-  } else {
+  if (currentLine >= dialogueLines.length) {
     dialogueText.textContent = "But you? You burst through the doors.";
     nextBtn.disabled = true;
-
-    // Wait for 2 seconds before going to the next page
     setTimeout(() => {
-      window.location.href = "refuse-the-call.html"; // Go to the next page
-    }, 2000); // 2 seconds delay
+      window.location.href = "refuse-the-call.html";
+    }, 2000);
+    return;
   }
+
+  const line = dialogueLines[currentLine]; // ✅ Fix: define line first
+
+  if (line.startsWith("__CHOICE_POINT_")) {
+    const key = line.replace(/__/g, ""); // e.g. "__CHOICE_POINT_1__" → "CHOICE_POINT_1"
+    const choice = choices[key];
+
+    function showChoice(text1, text2, callback1, callback2) {
+  choicesDiv.style.display = "block";  // Show the choices div
+  choice1Btn.textContent = text1;      // Set text for the first choice
+  choice2Btn.textContent = text2;      // Set text for the second choice
+
+  // Handle the first choice button click
+  choice1Btn.onclick = function() {
+    choicesDiv.style.display = "none"; // Hide the choices
+    callback1();                       // Execute the callback for choice 1
+  };
+
+  // Handle the second choice button click
+  choice2Btn.onclick = function() {
+    choicesDiv.style.display = "none"; // Hide the choices
+    callback2();                       // Execute the callback for choice 2
+  };
 }
+
+
+    currentLine++; // Move past the marker
+    return;
+  }
+
+  typeLine(line);
+  currentLine++;
+}
+
 
   
 
@@ -161,18 +211,6 @@
       showNextLine();
     }
   });
-
-  const choice1Dialogue = [
-  "You stay quiet, unsure of what to say...",
-  "Sir Gwaine stared back at you",
-  "It was awkward.",
-];
-
-const choice2Dialogue = [
-  "“Do you always follow the Popal orders?”",
-  "“...”",
-  "“Nice talking with you,” you said.",
-];
 
 
   showNextLine(); // show first line
