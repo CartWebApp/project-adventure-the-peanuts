@@ -75,3 +75,44 @@ input[type="text"] {
   background-size: cover;
   background-position: center;
 }
+
+
+.speed-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.speed-option {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 0%;
+}
+
+.speed-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.preview-box {
+  border: 1px solid white;
+  padding: 1rem;
+  width: 80%;
+  margin: auto;
+  min-height: 100px;
+  text-align: center;
+  color: white;
+  font-family: serif;
+}
+
+.speed-screen {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

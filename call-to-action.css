@@ -85,3 +85,30 @@
   #next-btn.blink {
     animation: blink 1s infinite;
   }
+
+  #choice-buttons {
+    text-align: center;
+  }
+  
+  #choice-buttons button {
+    background-color: rgba(0, 0, 0, 0.4); /* translucent black */
+    color: #f0e6d2; /* antique light beige text */
+    font-family: 'Cinzel', serif; /* Gothic Roman-style font (Google Font) */
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #c2a56c; /* gold-like border */
+    border-radius: 4px;
+    padding: 12px 32px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(194, 165, 108, 0.3);
+  }
+  
+  #choice-buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(194, 165, 108, 0.6);
+    transform: scale(1.03);
+  }
+  

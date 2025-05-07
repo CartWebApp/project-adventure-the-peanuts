@@ -1,7 +1,7 @@
 // Extract player's name from URL and insert into the dialogue bar
-const params = new URLSearchParams(window.location.search);
-const playerName = params.get('name') || 'Player';
-document.getElementById("player-name").textContent = playerName;
+// const params = new URLSearchParams(window.location.search);
+// const playerName = params.get('name') || 'Player';
+// document.getElementById("player-name").textContent = playerName;
 
 
 const dialogueLines = [
