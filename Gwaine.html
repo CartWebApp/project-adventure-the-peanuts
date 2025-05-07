@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Pagan</title>
+  <link rel="icon" href="images/icon.png">
+  <link rel="stylesheet" href="Gwaine.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="scene"></div>
+
+    <div id="dialogue-bar">
+      <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
+      <button id="next-btn">▶</button>
+    </div>
+
+    <!-- Choices Section -->
+    <div id="choices" style="display: none;">
+      <button id="choice-1">Stay Silent</button>
+      <button id="choice-2">Snark</button>
+    </div>
+  </div>
+
+  </div>
+<script>
+    const choicesDiv = document.getElementById("choices");
+const choice1Btn = document.getElementById("choice-1");
+const choice2Btn = document.getElementById("choice-2");
+
+    const dialogueLines = [
+  "You crashed into a hard piece of metal.",
+  "Looking up, you find a Templer knight stare down at you silently.", 
+  "“Sir Gwaine,” the Pope said behind you.",
+  "“Holy Father,” Sir Gwaine said.",
+  "The Pope approached you and the knight.",
+  "“You, young believer,” the Pope said, “You had seen things, had you not?”",
+  "You felt the Pope's eyes crawl all over you.",
+  "“Execution, Holy Father?” Sir Gwaine said.",
+  "“No,” you heard the Pope say sternly, “But, one shall pay for the sin of eavesdropping on a precious sight.”",
+  "The Pope went quiet for a second...",
+  "“You shall be kept alive, and you shall return to me tomorrow morning. Take them away, Sir Gwaine.”",
+  "You felt your arm being tugged roughly back away, watching the Pope stare blankly at you.",
+  "You were forced back outside and Sir Gwaine watched you silently.",
+  "__CHOICE_POINT_1__",
+  "Sir Gwaine abandoned you there. As much as you wanted to ponder, staying out at nights wasn't a good idea.",
+  "You ran into the night, weaving through the eerie streets to the outskirts of the city...",
+  "You could almost taste home...",
+  "You stumbled on your feet.",
+  "There, your parents' home stood before you like a parent inviting their open arms at you.",
+  "You quickly brushed your clothes neatly and entered inside the home with haste.",
+  "“There you are darling,” your mother says with a smile upon your arrival. Then your father reaches out to ruffle your hair and he speaks, “There you are, my child.”",
+  "__CHOICE_POINT_2__ ",
+  "Head to your room, okay? Must've been a long day,” your parents smiled kindly at you that you couldn't really be angry at them.",
+  "You went inside your room, it was a humble room; only a bed, a shrine, a few books, and a few wooden toys crafted by your grandparents.",
+  "__CHOICE_POINT_3__ (choose an etheral voice, choose a scary voice, choose to ignore)",
+  "You arose early in the morning, sneaking out of the room, you didn't want to wake up your parents and disturb their sleep.",
+  "With the creak of the door, you escaped your parent's home and headed off into the outskirts.",
+  "You found the church and you headed inside.",
+  "Inside, you found the Pope standing there.",
+  "“Young believer,” the Pope approached you and appraised you. “You have a task that is demanded of you. Find the holy canines of the cathedral”",
+  "You respond:",
+  "“Go off now, I await.” The Pope left you alone and you decided to head outside, there was bounded to be some clues.",
+  "Minigame:",
+  "You found a shed in the outskirts, there were footprints and it seemed to be locked.",
+  "__CHOICE_POINT_4__ (forcibly break it or find another way)",
+  "There were dogs inside!",
+  "“What are you doing?” You heard a gruff voice behind you.",
+  "Looking back, you saw two Templer knights: Sir Gwaine and Sir Newman!",
+  "“Get away from there,” Sir Gwaine said. You promptly stepped back, the gleaming swords on their waists prompted you to be compliant.",
+  "Sir Newman approached you calmly and spoke, “How did you find this place?”",
+  "“I...” you trailed off, watching the knights.",
+  "“We should kill you before you--”",
+  "“We are NOT killing an innocent civilian!” Sir Newman yelled at Sir Gwaine before looking back at you. “Look, don't tell anyone about this, okay? Keep this between us three?”",
+  "__CHOICE_POINT_5__ (agree/truth, or agree/lie and tell the pope anyways)",
+  "Sir Newman smiles at your decision while Sir Gwaine looks displeased. But, safely, you were sent off.",
+  "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.",
+  "“Well?”",
+  "__CHOICE_POINT_6__ (tell the truth, or, lie)",
+  "(either way) The Pope summons forth the Templer knights. “Sir Gwaine and Sir Newman are hereby sent to the catacombs for execution.”",
+  "Both knights look betrayed at you, like they couldn't believe you did that, but they were forcibly taken away before you could hear them curse you.",
+  "“You done yourself well, [user name],” the Pope praised, “Perhaps you are more useful than you look. I shall grant you the honors of the execution.”",
+  "You respond: (no way, or, okay I will)",
+  "(either way) Later, deep within the catacombs, the Pope walked you to the catacombs. Inside, the two knights stayed locked inside there.",
+  "“Take this.” The Pope handed you a sword.",
+  "“And kill them,” he whispered into your ear.",
+  "The Pope watched you as you stepped forward.",
+  "“You're a traitor!” Sir Newman shouted as he put his hand on his sword.",
+  "“...” Sir Gwaine stares at you deathly silent.",
+  "Minigame: (choose to kill Newman, or, Gwaine)",
+  "After the death of one of the knights, you hear something growl in the darkness.",
+  "(which knight that didn't die) and you watched as a...demon crawled forward.",
+  "“Ghaume,” the Pope whispered before slowly stepping forward, leaving you and the Templer dumbfounded.",
+  "The Pope began to yell, “Come to me! Hear---”",
+  "The Pope vanished, gone, into the mouth of the demon.",
+  "Minigame: kill the demon Ghuame",
+  "(if you were lying and killed) After the demon is killed, (the templer knight who survived) says, “I owe you my life debt...but I cannot forgive you lying and killing my brother-in-arms. Leave the place, and I shall not pursue.”",
+  "(if you told the truths and expressed regret) After the demon is killed, (the templer knight who survived) says, “I owe you my life debt...but I forgive you for trying to be...sincere. Go, leave the place, and I shall not pursue.”",
+  "You ran out of there, toring off your stained robes and running off into the light of God to your parents home.",
+  "You approached the doors...and it opened.",
+  "(ending 1: heaven)",
+  "(ending 2: hell)",
+  "(ending 3: the pope wins)",
+  ];
+
+  let currentLine = 0;
+  let charIndex = 0;
+  let typing = false;
+  const dialogueText = document.getElementById("dialogue-text");
+  const nextBtn = document.getElementById("next-btn");
+  let blinkTimeout;
+  
+
+  function typeLine(line) {
+    typing = true;
+    dialogueText.textContent = "";
+    charIndex = 0;
+    clearTimeout(blinkTimeout);
+    nextBtn.classList.remove("blink");
+
+    const interval = setInterval(() => {
+      if (charIndex < line.length) {
+        dialogueText.textContent += line.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(interval);
+        typing = false;
+        startBlinkTimer(); // start blinking countdown after typing finishes
+      }
+    }, 15);
+  }
+  const choices = {
+  CHOICE_POINT_1: {
+    text1: "Stay Silent",
+    text2: "Snark",
+    result1: "You stayed silent. The knight looked disappointed.",
+    result2: "“Do you always follow orders?” you asked. The knight didn’t respond."
+  },
+  CHOICE_POINT_2: {
+  text1: "You reassure your parents",
+  text2: "You avoid speaking",
+  result1: "'Don't worry, mama and papa, I just...got a little bit lost.'",
+  result2: "'I'm okay, just tired.'."
+},
+  
+  // Add more as needed...
+};
+
+function showNextLine() {
+  if (typing) return;
+
+  clearTimeout(blinkTimeout);
+  nextBtn.classList.remove("blink");
+
+  if (currentLine >= dialogueLines.length) {
+    dialogueText.textContent = "But you? You burst through the doors.";
+    nextBtn.disabled = true;
+    setTimeout(() => {
+      window.location.href = "refuse-the-call.html";
+    }, 2000);
+    return;
+  }
+
+  const line = dialogueLines[currentLine]; // ✅ Fix: define line first
+
+  if (line.startsWith("__CHOICE_POINT_")) {
+    const key = line.replace(/__/g, ""); // e.g. "__CHOICE_POINT_1__" → "CHOICE_POINT_1"
+    const choice = choices[key];
+
+    function showChoice(text1, text2, callback1, callback2) {
+  choicesDiv.style.display = "block";  // Show the choices div
+  choice1Btn.textContent = text1;      // Set text for the first choice
+  choice2Btn.textContent = text2;      // Set text for the second choice
+
+  // Handle the first choice button click
+  choice1Btn.onclick = function() {
+    choicesDiv.style.display = "none"; // Hide the choices
+    callback1();                       // Execute the callback for choice 1
+  };
+
+  // Handle the second choice button click
+  choice2Btn.onclick = function() {
+    choicesDiv.style.display = "none"; // Hide the choices
+    callback2();                       // Execute the callback for choice 2
+  };
+}
+
+
+    currentLine++; // Move past the marker
+    return;
+  }
+
+  typeLine(line);
+  currentLine++;
+}
+
+
+  
+
+  function startBlinkTimer() {
+    blinkTimeout = setTimeout(() => {
+      nextBtn.classList.add("blink");
+    }, 5000); // 5 seconds of inactivity
+  }
+
+  nextBtn.addEventListener("click", showNextLine);
+
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("#next-btn")) {
+      showNextLine();
+    }
+  });
+
+
+  showNextLine(); // show first line
+</script>
+</body>
+</html>
