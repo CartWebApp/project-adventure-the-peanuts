@@ -46,11 +46,6 @@
     "'DON'T TURN BACK'",
     "'DON'T-'",
   ],
-  burst: [
-    "You burst through the doors like an avenging angel.",
-    "The Holy Father spun around, the dagger still dripping in his hand.",
-    "“YOU!” he roared. The game had changed."
-  ]
 };
     const dialogueLines = [
   "You forgot to say your night prayers at the inner altar! Don’t forget what mama and papa said!",
@@ -124,10 +119,10 @@ if (currentLine < sceneLines.length) {
 
   // Check if we're at the dramatic cutoff line
   if (currentScene === "freeze" && line === "You should-")  {
-    const sceneDiv = document.getElementById("scene");
-    sceneDiv.classList.remove("murder-cropped.png");
-    sceneDiv.classList.add("murder-cropped.png");
-  }
+        // Transition to lily.html at this specific line
+        window.location.href = "lily/lily.html"; // This will transition to the new HTML page
+        return; // Prevent the rest of the code from executing
+      }
 
   typeLine(line);
   currentLine++;
