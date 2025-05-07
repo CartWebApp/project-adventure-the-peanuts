@@ -17,7 +17,7 @@
     width: 100%;
     /* height: 100%; */
     flex: 3;
-    background-image: url('images/murder3.png');
+    background-image: url('/images/murder3.png');
     background-color: ;
     background-size: contain;
     background-position: center;
