@@ -18,7 +18,7 @@
   
   #scene {
     flex: 3; /* 75% of the height */
-    background-image: url('../images/murder3.png');
+    background-image: url('../images/insidechurch.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
