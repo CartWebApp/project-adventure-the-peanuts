@@ -69,9 +69,9 @@ const choice3Btn = document.getElementById("choice-3");
   "Inside, you found the Pope standing there.",
   "“Young believer,” the Pope approached you and appraised you. “You have a task that is demanded of you. Find the heathen, discover their blashempy.”",
   "“Go off now, I await.” The Pope left you alone and you decided to head outside, there was bounded to be some clues.",
-  "Minigame:",
   "You found yourself deep within the catacombs. Nothing but darkness, cobwebs, torches, and--",
   "There was something hidden within the darkness.",
+  "Minigame: puzzle game",
   "You find a figure made of stone and wood.",
   "A voice shouts at you, “You there!”",
   "“What are you doing?” You heard a gruff voice behind you.",
@@ -95,7 +95,7 @@ const choice3Btn = document.getElementById("choice-3");
   "The Pope watched you as you stepped forward.",
   "“I can't believe you'll do this,” Archbishop Harald said.",
   "“Obedient sheep,” Sister Lily said.",
-  "Minigame: (choose to kill Sister Lily, or, Archbishop Harald)",
+  "Minigame: (choose to kill Sister Lily, or, Archbishop Harald) through magician sword box game",
   "But before you could kill anyone, you hear something growl in the darkness.",
   "You all watched as a...demon crawled forward.",
   "“Ghaume,” the Pope whispered before slowly stepping forward, leaving you and the Templer dumbfounded.",
@@ -306,7 +306,10 @@ function showNextLine() {
     return;
   }
 
-  const line = dialogueLines[currentLine];
+ const line = dialogueLines[currentLine];
+updateSceneImage(line);
+updateCharacterVisibility(line);
+
   
   // Call updateSceneImage with the current line of dialogue
   updateSceneImage(line);
@@ -333,10 +336,36 @@ function showNextLine() {
 
     return;
   }
+  
 
   typeLine(line);
   currentLine++;
 }
+
+const characterVisibilityByLine = {
+  "The Pope looks down at you, seemingly surprised to find an eavesdropper.": ["character-sprite2", "character-sprite1"],
+  "“What do you think, sire? Execute the vermin?”": ["character-sprite1", "character-sprite2"],
+  "Looking back, you saw Sister Lily and Archbishop Harald.": ["character-sprite1", "character-sprite3"],
+  "“Step away child,” Archbishop Harald said": ["character-sprite1", "character-sprite3"],
+  "(either way) The Pope summons forth the Sister Lily and Archbishop Harald.": ["character-sprite1", "character-sprite2", "character-sprite3"],
+  "The Pope vanished, gone, into the mouth of the demon.": ["character-sprite1", "character-sprite3"], // Pope gone
+  // Add more lines as needed
+};
+function updateCharacterVisibility(line) {
+  const characters = ["character-sprite1", "character-sprite2", "character-sprite3"];
+  const visibleCharacters = characterVisibilityByLine[line] || [];
+
+  characters.forEach(id => {
+    const el = document.getElementById(id);
+    if (visibleCharacters.includes(id)) {
+      el.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
+  });
+}
+
+
 
 nextBtn.addEventListener("click", showNextLine);
 
