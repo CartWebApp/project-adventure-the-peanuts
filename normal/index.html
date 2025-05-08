@@ -7,8 +7,8 @@
   <link rel="icon" href="../images/icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 <body>
   
@@ -18,33 +18,21 @@
     <button id="start-btn">Start Game</button>
   </div>
 
-  <!-- name input screen -->
-  <div id="name-screen" class="screen">
-    <h2>What is your name?</h2>
-    <input type="text" id="player-name" placeholder="Enter your name" />
-    <button id="name-submit-btn">Submit</button>
-  </div>
-
-  <!-- confirm screen -->
-  <div id="confirm-screen" class="screen">
-    <h2 id="confirm-message"></h2>
-    <a href="startingscene.html"><button id="confirm-btn">Yes, I'm Ready!</button></a>
-  </div>
-
   <!-- text speed screen -->
 <div id="speed-screen" class="screen">
-  <h2>Choose Text Speed</h2>
+  <h2 class="h2">Choose Text Speed</h2>
   <div class="speed-buttons">
     <button class="speed-option" data-speed="instant">Instant</button>
     <button class="speed-option" data-speed="fast">Fast</button>
     <button class="speed-option" data-speed="medium">Medium</button>
     <button class="speed-option" data-speed="slow">Slow</button>
-
   </div>
   <div class="preview-box">
-    <p id="preview-text"></p>
+    <p id="preview-text">Select a speed to preview.</p>
   </div>
+  <button id="confirm-btn" style="display: none;">Confirm</button> <!-- Confirm button -->
 </div>
+
 
   <!-- game screen (not visible yet) -->
   <div id="game-screen" class="screen">
@@ -58,4 +46,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-

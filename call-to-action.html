@@ -7,8 +7,6 @@
   <link rel="icon" href="images/icon.png">
   <link rel="stylesheet" href="call-to-action.css" />
 </head>
-
-
 <body>
   <div id="container">
     <div id="scene"></div>
@@ -24,154 +22,176 @@
       <button id="next-btn">▶</button>
     </div>
   </div>
-<script>
-  const scenes = {
-  freeze: [
-    "You froze.",
-    "Your blood ran cold and your limbs locked into place as if the puppetmaster stopped a marinette.",
-    "Your heart began to beat.",
-    "You should get out of here.",
-    "You should get out of here.",
-    "You should get out of here.",
-    "You should get out of here.",
-    "You should-",
-  ],
-  run: [
-    "You jumped.",
-    "Turning on your heel, you ran down the halls of the cathedral.",
-    "You heard the doors oop open right behind you,",
-    "'DON'T TURN BACK'",
-    "'DON'T TURN BACK'",
-    "'DON'T TURN BACK'",
-    "'DON'T TURN BACK'",
-    "'DON'T-'",
-  ],
-};
+
+  <script>
+    // Retrieve the selected speed from localStorage
+    const selectedSpeed = localStorage.getItem('selectedSpeed') || 'medium'; // Default to 'medium' if no speed is saved
+
+    // Dialogue lines and scenes
+    const scenes = {
+      freeze: [
+        "You froze.",
+        "Your blood ran cold and your limbs locked into place as if the puppetmaster stopped a marinette.",
+        "Your heart began to beat.",
+        "You should get out of here.",
+        "You should get out of here.",
+        "You should get out of here.",
+        "You should get out of here.",
+        "You should-",
+      ],
+      run: [
+        "You jumped.",
+        "Turning on your heel, you ran down the halls of the cathedral.",
+        "You heard the doors oop open right behind you,",
+        "'DON'T TURN BACK'",
+        "'DON'T TURN BACK'",
+        "'DON'T TURN BACK'",
+        "'DON'T TURN BACK'",
+        "'DON'T-'",
+      ],
+    };
+
     const dialogueLines = [
-  "You forgot to say your night prayers at the inner altar! Don’t forget what mama and papa said!",
-  "“Well, carp fish,” you muttered to yourself before rush—tiptoeing back inside the corridors down to the altar where all were welcomed.",
-  "But as you briskly walked to the altar, you hear two voices arguing in altercation…",
-  "“I know what you did, Father,” the voice growled with no respect, but you knew who exactly “Father” was.",
-  "The Holy Pope.",
-  "“Quiet, Son Thomas,” the Holy Father spat out in a hush like he had some gunk stuck in his throat, “You saw nothing. Dismiss yourself.”",
-  "You closed in, nearing the sound of the argument, against the wall you pressed and listened in…",
-  "“...I won’t grovel again, Father...!” The voice strained, like the mysterious voice was trying to keep their bottle of anger sealed under a cap lid, “I know…I know you approved of the murder of Elizabeth Likena…because she found out you were damning our Lord’s name and celebrating a new numen—”",
-  "“Quiet!” The Holy Father shouted.",
-  "The sudden volume of the voice reeled you back like the force of a hurricane shoving you away in shock. You felt paralysed as if someone threw cold water over you. The keyhole pour light onto you, and you could see the small fight.",
-  "“I will not tolerate any disrespect from you unsightly bunch, peasant,” the Holy Father declared, “...You will have your mouth shut and obedient as you once were…",
-  "“Or else!”",
-  "“No!” The other person, Son Thomas rebutted right back, and from what you could hear, stepped closer to the Holy Father.",
-  "“DISOBEDIENT HEATHEN!” Holy Father roared.",
-  "Your eyes widen as you watch an ornate dagger lift itself high up in the air and like lightning, strike down into the heart of Saint Thomas.",
-  "You gasped in shock like the stony gaze of Medusa turned you into stone. You witness the Holy Father step back, his robes that were was white as limb’s wool become tainted with the purity of a saint.",
-];
+      "You forgot to say your night prayers at the inner altar! Don’t forget what mama and papa said!",
+      "“Well, carp fish,” you muttered to yourself before rush—tiptoeing back inside the corridors down to the altar where all were welcomed.",
+      "But as you briskly walked to the altar, you hear two voices arguing in altercation…",
+      "“I know what you did, Father,” the voice growled with no respect, but you knew who exactly “Father” was.",
+      "The Holy Pope.",
+      "“Quiet, Son Thomas,” the Holy Father spat out in a hush like he had some gunk stuck in his throat, “You saw nothing. Dismiss yourself.”",
+      "You closed in, nearing the sound of the argument, against the wall you pressed and listened in…",
+      "“...I won’t grovel again, Father...!” The voice strained, like the mysterious voice was trying to keep their bottle of anger sealed under a cap lid, “I know…I know you approved of the murder of Elizabeth Likena…because she found out you were damning our Lord’s name and celebrating a new numen—”",
+      "“Quiet!” The Holy Father shouted.",
+      "The sudden volume of the voice reeled you back like the force of a hurricane shoving you away in shock. You felt paralysed as if someone threw cold water over you. The keyhole pour light onto you, and you could see the small fight.",
+      "“I will not tolerate any disrespect from you unsightly bunch, peasant,” the Holy Father declared, “...You will have your mouth shut and obedient as you once were…",
+      "“Or else!”",
+      "“No!” The other person, Son Thomas rebutted right back, and from what you could hear, stepped closer to the Holy Father.",
+      "“DISOBEDIENT HEATHEN!” Holy Father roared.",
+      "Your eyes widen as you watch an ornate dagger lift itself high up in the air and like lightning, strike down into the heart of Saint Thomas.",
+      "You gasped in shock like the stony gaze of Medusa turned you into stone. You witness the Holy Father step back, his robes that were was white as limb’s wool become tainted with the purity of a saint.",
+    ];
 
-  let currentLine = 0;
-  let charIndex = 0;
-  let typing = false;
-  const dialogueText = document.getElementById("dialogue-text");
-  const nextBtn = document.getElementById("next-btn");
-  let blinkTimeout;
-  let currentScene = null; // null means intro
+    let currentLine = 0;
+    let charIndex = 0;
+    let typing = false;
+    const dialogueText = document.getElementById("dialogue-text");
+    const nextBtn = document.getElementById("next-btn");
+    let blinkTimeout;
+    let currentScene = null; // null means intro
 
+    // Typing effect with speed based on selected speed
+    const speedValues = {
+      instant: 0,
+      fast: 15,
+      medium: 30,
+      slow: 100
+    };
 
-  function typeLine(line) {
-    typing = true;
-    dialogueText.textContent = "";
-    charIndex = 0;
-    clearTimeout(blinkTimeout);
-    nextBtn.classList.remove("blink");
+    function typeLine(line) {
+      typing = true;
+      dialogueText.textContent = '';
+      charIndex = 0;
+      clearTimeout(blinkTimeout);
+      nextBtn.classList.remove("blink");
 
-    const interval = setInterval(() => {
-      if (charIndex < line.length) {
-        dialogueText.textContent += line.charAt(charIndex);
-        charIndex++;
-      } else {
-        clearInterval(interval);
-        typing = false;
-        startBlinkTimer(); // start blinking countdown after typing finishes
-      }
-    }, 2);
-  }
+      const speed = speedValues[selectedSpeed];
 
-  function showNextLine() {
-  if (typing) return;
-
-  clearTimeout(blinkTimeout);
-  nextBtn.classList.remove("blink");
-
-  if (currentScene === null) {
-    // Intro sequence
-    if (currentLine < dialogueLines.length) {
-      typeLine(dialogueLines[currentLine]);
-      currentLine++;
-    } else {
-      dialogueText.textContent = "What do you do?";
-      nextBtn.style.display = "none";
-      document.getElementById("choice-buttons").style.display = "block";
+      const interval = setInterval(() => {
+        if (charIndex < line.length) {
+          dialogueText.textContent += line.charAt(charIndex);
+          charIndex++;
+        } else {
+          clearInterval(interval);
+          typing = false;
+          startBlinkTimer(); // Start blinking after typing finishes
+        }
+      }, speed);
     }
-  } else {
-    // Scene-specific sequence
-    const sceneLines = scenes[currentScene];
 
-if (currentLine < sceneLines.length) {
-  const line = sceneLines[currentLine];
+    // Show next line of dialogue
+    function showNextLine() {
+      if (typing) return;
 
-  // Check if we're at the dramatic cutoff line
-  if (currentScene === "freeze" && line === "You should-")  {
-        // Transition to lily.html at this specific line
-        window.location.href = "lily/lily.html"; // This will transition to the new HTML page
-        return; // Prevent the rest of the code from executing
+      clearTimeout(blinkTimeout);
+      nextBtn.classList.remove("blink");
+
+      if (currentScene === null) {
+        // Intro sequence
+        if (currentLine < dialogueLines.length) {
+          typeLine(dialogueLines[currentLine]);
+          currentLine++;
+        } else {
+          dialogueText.textContent = "";
+          nextBtn.style.display = "none";
+          document.getElementById("choice-buttons").style.display = "block";
+        }
+      } else {
+        // Scene-specific sequence
+        const sceneLines = scenes[currentScene];
+
+        if (currentLine < sceneLines.length) {
+          const line = sceneLines[currentLine];
+
+          // Check if we're at the dramatic cutoff line
+          if (currentScene === "freeze" && line === "You should-") {
+            // Transition to lily.html at this specific line
+            window.location.href = "lily/lily.html"; // This will transition to the new HTML page
+            return;
+          }
+
+          typeLine(line);
+          currentLine++;
+        } else {
+          dialogueText.textContent = "The scene ends here.";
+          nextBtn.disabled = true;
+        }
+      }
+    }
+
+    // Handle choices made in the game
+    function makeChoice(choice) {
+      if (choice === "burst") {
+        window.location.href = "refuse-the-call.html";
+        return;
       }
 
-  typeLine(line);
-  currentLine++;
-} else {
-  dialogueText.textContent = "The scene ends here.";
-  nextBtn.disabled = true;
-}
+      const sceneDiv = document.getElementById("scene");
+      sceneDiv.className = ""; // Remove old classes
+      sceneDiv.classList.add(`${choice}-scene`); // Add new class like freeze-scene, run-scene, etc.
 
-  }
-}
-
-
-function makeChoice(choice) {
-  if (choice === "burst") {
-    window.location.href = "refuse-the-call.html";
-    return;
-  }
-
-  const sceneDiv = document.getElementById("scene");
-  sceneDiv.className = ""; // Remove old classes
-  sceneDiv.classList.add(`${choice}-scene`); // Add new class like freeze-scene, run-scene, etc.
-
-  currentScene = choice;
-  currentLine = 0;
-  document.getElementById("choice-buttons").style.display = "none";
-  nextBtn.style.display = "inline-block";
-  showNextLine();
-}
-
-
-
-  function startBlinkTimer() {
-    blinkTimeout = setTimeout(() => {
-      nextBtn.classList.add("blink");
-    }, 5000); // 5 seconds of inactivity
-  }
-
-  nextBtn.addEventListener("click", showNextLine);
-
-  document.addEventListener("click", function (e) {
-    if (!e.target.closest("#next-btn")) {
+      currentScene = choice;
+      currentLine = 0;
+      document.getElementById("choice-buttons").style.display = "none";
+      nextBtn.style.display = "inline-block";
       showNextLine();
     }
-  });
 
-  showNextLine(); // show first line
+    // Start the blinking effect for the next button
+    function startBlinkTimer() {
+      blinkTimeout = setTimeout(() => {
+        nextBtn.classList.add("blink");
+      }, 5000); // 5 seconds of inactivity
+    }
 
+    // Event listener for the next button
+    nextBtn.addEventListener("click", showNextLine);
 
-</script>
+    // Event listener for clicking anywhere on the document
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("#next-btn")) {
+        showNextLine();
+      }
+    });
 
+    // Event listener for the right arrow key (keyCode: 39 or key: 'ArrowRight')
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.keyCode === 39) {
+        showNextLine();
+      }
+    });
+
+    // Start the first line
+    showNextLine();
+
+  </script>
 </body>
 </html>
