@@ -9,7 +9,13 @@
 </head>
 <body>
   <div id="container">
-    <div id="scene"></div>
+    <div id="scene">
+      <div id="character">
+      <img src="images/sister.png" alt="Character Sprite" id="character-sprite1">
+      <img src="images/pope.png" alt="Character Sprite" id="character-sprite2">
+      <img src="images/Archbishop.png" alt="Character Sprite" id="character-sprite3">
+    </div>
+  </div>
 
     <div id="dialogue-bar">
       <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
@@ -44,6 +50,7 @@ const choice3Btn = document.getElementById("choice-3");
   "The Pope went quiet for a second...",
   "Sister Lily glanced at the Pope silently before waving you off.",
   "You felt Sister Lily grab your arm and shove you away from the Pope and the massacre...",
+  "__CHOICE_POINT_1__",
   "“Head home now,” she said before turning away",
   "As much as you wanted to ponder and curse her, staying out at nights wasn't a good idea.",
   "You ran into the night, weaving through the eerie streets to the outskirts of the city...",
@@ -52,16 +59,15 @@ const choice3Btn = document.getElementById("choice-3");
   "There, your parents' home stood before you like a parent inviting their open arms at you.",
   "You quickly brushed your clothes neatly and entered inside the home with haste.",
   "“There you are darling,” your mother says with a smile upon your arrival. Then your father reaches out to ruffle your hair and he speaks, “There you are, my child.”",
-  "__CHOICE_POINT_1__",
+  "__CHOICE_POINT_2__",
   "Head to your room, okay? Must've been a long day,” your parents smiled kindly at you that you couldn't really be angry at them.",
   "You went inside your room, it was a humble room; only a bed, a shrine, a few books, and a few wooden toys crafted by your grandparents.",
-  "__CHOICE_POINT_2__ (choose an etheral voice, choose a scary voice, choose ignore)",
+  "__CHOICE_POINT_3__",
   "You arose early in the morning, sneaking out of the room, you didn't want to wake up your parents and disturb their sleep.",
   "With the creak of the door, you escaped your parent's home and headed off into the outskirts.",
   "You found the church and you headed inside.",
   "Inside, you found the Pope standing there.",
   "“Young believer,” the Pope approached you and appraised you. “You have a task that is demanded of you. Find the heathen, discover their blashempy.”",
-  "__CHOICE_POINT_3__",
   "“Go off now, I await.” The Pope left you alone and you decided to head outside, there was bounded to be some clues.",
   "Minigame:",
   "You found yourself deep within the catacombs. Nothing but darkness, cobwebs, torches, and--",
@@ -75,14 +81,14 @@ const choice3Btn = document.getElementById("choice-3");
   "“I...” you trailed off, watching the knights.",
   "“It is rather dangerous for someone like you to be--” Archbishop Harald was cut off",
   "Sister Lily scoffed, “Whatever you think you are doing, enough with it. Give us that.”",
-  "__CHOICE_POINT_4__ (agree and give back, or, refuse)",
+  "__CHOICE_POINT_4__",
   "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.",
   "“Well?”",
-  "__CHOICE_POINT_5__ (tell the truth and show the figure, or, lie)",
+  "__CHOICE_POINT_5__",
   "(either way) The Pope summons forth the Sister Lily and Archbishop Harald. “Sister Lily and Archbishop Harald are hereby sent to the catacombs for execution.”",
   "Both persons look betrayed at you, like they couldn't believe you did that, but they were forcibly taken away before you could hear them curse you.",
   "“You done yourself well, [user name],” the Pope praised, “Perhaps you are more useful than you look. I shall grant you the honors of the execution.”",
-  "__CHOICE_POINT_6__ (no way, or, okay I will)",
+  "__CHOICE_POINT_6__",
   "(either way) Later, deep within the catacombs, the Pope walked you to the catacombs. Inside, the two individuals stayed locked inside there.",
   "“Use the figure.” The Pope handed you the figure back again.",
   "“And kill them,” he whispered into your ear.",
@@ -134,10 +140,10 @@ const choice3Btn = document.getElementById("choice-3");
   CHOICE_POINT_1: {
     text1: "Stay Silent",
     text2: "Snark",
-    result1: "You stayed silent. The knight looked disappointed.",
-    result2: "“Do you always follow orders?” you asked. The knight didn’t respond.",
-    callback1: () => { typeLine("You stayed silent. The knight looked disappointed.");  currentLine++; },
-    callback2: () => { typeLine("“Do you always follow orders?” you asked. The knight didn’t respond."); currentLine++; }
+    result1: "You stayed silent. Sister Lily looked unamused.",
+    result2: "'You didn't have to push me,' you said, but Sister Lily ignored you and headed back inside.",
+    callback1: () => { typeLine("You stayed silent. Sister Lily looked unamused.");  currentLine++; },
+    callback2: () => { typeLine("You didn't have to push me,' you said, but Sister Lily ignored you and headed back inside."); currentLine++; }
 
   },
   CHOICE_POINT_2: { 
@@ -162,32 +168,24 @@ CHOICE_POINT_3: {
 
   },
 CHOICE_POINT_4: {
-  text1: "Looking around, you found a rock sitting right there. It looked like a sturdy little thing. So you picked it up.",
-  text2: "You didn't want to break open the lock and be caught for something that wasn't supposed to be violent. You decided to try pry open the rock with a small dagger you had.",
-  result1: "'Inside...you found...the dogs. The missing dogs were trapped inside the shed. What for? Why? They began barking in fear.'",
-  result2: "'Inside...you found...the dogs. The missing dogs were trapped inside the shed. Why? The dogs whimpered in fear.'.",
-  callback1: () => { typeLine("Inside...you found...the dogs. The missing dogs were trapped inside the shed. What for? Why? They began barking in fear."); currentLine++; },
-  callback2: () => { typeLine("Inside...you found...the dogs. The missing dogs were trapped inside the shed. Why? The dogs whimpered in fear."); currentLine++; }
+  text1: "Agree",
+  text2: "Refuse",
+  result1: "You gave the figure back to the two and they looked pleased enough.",
+  result2: "'No way,' you said, before running out of the catacombs with the figure in hand.",
+  callback1: () => { typeLine("You gave the figure back to the two and they looked pleased enough."); currentLine++; },
+  callback2: () => { typeLine("'No way,' you said, before running out of the catacombs with the figure in hand."); currentLine++; }
 
 },
 CHOICE_POINT_5: {
   text1: "You decided to tell the truth.",
   text2: "You decided to lie.",
-  result1: "'Okay, I promise I won't tell anyone, espcially not the Pope. As long as you don't tell mine's either.'",
-  result2: "'Oh, of course, sure, I won't tell a soul on this holy land, I assure you Sir Newman.'.",
-  callback1: () => { typeLine("Okay, I promise I won't tell anyone, espcially not the Pope. As long as you don't tell mine's either."); currentLine++; },
-  callback2: () => { typeLine("Oh, of course, sure, I won't tell a soul on this holy land, I assure you Sir Newman."); currentLine++; }
+  result1: "'I had found Sister Lily and Archbishop Harald down in the catacombs, and I scoped out this blasemphous figure.'",
+  result2: "'I had found no one, there was nothing to be found.'",
+  callback1: () => { typeLine("I had found Sister Lily and Archbishop Harald down in the catacombs, and I scoped out this blasemphous figure."); currentLine++; },
+  callback2: () => { typeLine("I had found no one, there was nothing to be found."); currentLine++; }
 
 },
 CHOICE_POINT_6: {
-  text1: "You told the truth",
-  text2: "You told a lie",
-  result1: "'Sir Newman and Sir Gwaine...I caught them trying to steal away your holy canines inside a shed...I don't know why.'",
-  result2: "'I didn't find anybody or anything, not a trace in sight, Holy Father.'",
-  callback1: () => { typeLine("Sir Newman and Sir Gwaine...I caught them trying to steal away your holy canines inside a shed...I don't know why."); currentLine++; },
-  callback2: () => { typeLine("I didn't find anybody or anything, not a trace in sight, Holy Father."); currentLine++; }
-},
-CHOICE_POINT_7: {
   text1: "You refused",
   text2: "You comply",
   result1: "'I...' you stuttered, 'I won't do it, I can't do it.'",
@@ -210,13 +208,13 @@ function showChoice(text1, text2, callback1, callback2, text3 = null, callback3 
   choice1Btn.onclick = function () {
     choicesDiv.style.display = "none"; 
     callback1(); 
-    setTimeout(showNextLine, 2000); 
+    setTimeout(showNextLine, 200); 
   };
 
   choice2Btn.onclick = function () {
     choicesDiv.style.display = "none";
     callback2();
-    setTimeout(showNextLine, 2000);
+    setTimeout(showNextLine, 200);
   };
 
   if (text3 && callback3) {
@@ -224,7 +222,7 @@ function showChoice(text1, text2, callback1, callback2, text3 = null, callback3 
     choice3Btn.onclick = function () {
       choicesDiv.style.display = "none";
       callback3();
-      setTimeout(showNextLine, 2000);
+      setTimeout(showNextLine, 200);
     };
   }
 }
@@ -234,15 +232,6 @@ function showNextLine() {
 
   clearTimeout(blinkTimeout);
   nextBtn.classList.remove("blink");
-
-  if (currentLine >= dialogueLines.length) {
-    dialogueText.textContent = "But you? You burst through the doors.";
-    nextBtn.disabled = true;
-    setTimeout(() => {
-      window.location.href = "refuse-the-call.html"; // Redirect after finishing dialogue
-    }, 2000);
-    return;
-  }
 
   const line = dialogueLines[currentLine];
   updateSceneImage(currentLine);
