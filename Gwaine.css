@@ -86,3 +86,7 @@
     animation: blink 1s infinite;
   }
   
+  #character {
+    position: absolute;
+    bottom: 275px;
+  }
