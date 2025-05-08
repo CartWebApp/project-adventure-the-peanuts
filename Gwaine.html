@@ -9,7 +9,13 @@
 </head>
 <body>
   <div id="container">
-    <div id="scene"></div>
+    <div id="scene">
+      <div id="character" style="position: absolute; top: 0; left: 0;">
+        <img src="images/knight.png" alt="Character Sprite" id="character-sprite">
+        <img src="images/pope.png" alt="Character Sprite" id="character-sprite">
+        <img src="images/Newman.png" alt="Character Sprite" id="character-sprite">
+      </div>
+    </div>
 
     <div id="dialogue-bar">
         <p id="dialogue-text">Welcome, <span id="player-name">Player</span></p>
@@ -284,17 +290,17 @@ function showNextLine() {
 // Scene changes mapping based on specific dialogue lines
 const sceneChangesByLine = {
   "You were forced back outside and Sir Gwaine watched you silently.": "images/outsideChurch.png",
-  "You ran into the night, weaving through the eerie streets to the outskirts of the city...": "images/nightCity.png",
-  "There, your parents' home stood before you like a parent inviting their open arms at you.": "images/homeExterior.png",
-  "“There you are darling,” your mother says with a smile upon your arrival. Then your father reaches out to ruffle your hair and he speaks, “There you are, my child.”": "images/homeInterior.png",
+  "You ran into the night, weaving through the eerie streets to the outskirts of the city...": "images/outside.png",
+  "There, your parents' home stood before you like a parent inviting their open arms at you.": "images/outsidehome.png",
+  "“There you are darling,” your mother says with a smile upon your arrival. Then your father reaches out to ruffle your hair and he speaks, “There you are, my child.”": "images/insidehome.png",
   "You went inside your room, it was a humble room; only a bed, a shrine, a few books, and a few wooden toys crafted by your grandparents.": "images/bedroom.png",
   "With the creak of the door, you escaped your parent's home and headed off into the outskirts.": "images/outskirts.png",
   "You found a shed in the outskirts, there were footprints and it seemed to be locked.": "images/shed.png",
   "“What are you doing?” You heard a gruff voice behind you.": "images/knightsAppear.png",
-  "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.": "images/cathedral.png",
+  "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.": "images/insidechurch.png",
   "Later, deep within the catacombs, the Pope walked you to the catacombs. Inside, the two knights stayed locked inside there.": "images/catacombs.png",
   "After the death of one of the knights, you hear something growl in the darkness.": "images/demonScene.png",
-  "You ran out of there, tearing off your stained robes and running off into the light of God to your parents' home.": "images/finalRun.png"
+  "You ran out of there, tearing off your stained robes and running off into the light of God to your parents' home.": "images/outsidelight.png"
 };
 
 // Function to update the background scene
