@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4x4 Grid Box</title>
+    <link rel="stylesheet" href="miniG.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="sword-container">
+            <!-- Make sure both swords are draggable -->
+            <div class="sword" id="sword1" draggable="true">
+                <img src="assets/sword.png" alt="Sword">
+            </div>
+            <div class="sword" id="sword2" draggable="true">
+                <img src="assets/sword.png" alt="Sword">
+            </div>
+        </div>
+
+        <!-- The game grid -->
+        <div class="box" id="box">
+            <!-- Grid cells will be generated here by JS -->
+        </div>
+
+        <!-- Pierce button -->
+        <button id="pierceBtn">Pierce!</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+const box = document.getElementById('box');
+const sword1 = document.getElementById('sword1');
+const sword2 = document.getElementById('sword2');
+const pierceBtn = document.getElementById('pierceBtn');
+const result = document.getElementById('result');
+let sword1Dropped = false;
+let sword2Dropped = false;
+
+// Generate 4x4 grid cells
+function createGrid() {
+    for (let i = 0; i < 16; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.setAttribute('data-index', i);
+        cell.addEventListener('dragover', (event) => {
+            event.preventDefault();  // Allow dropping
+            cell.classList.add('droppable');
+        });
+        cell.addEventListener('dragleave', () => {
+            cell.classList.remove('droppable');
+        });
+        cell.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const sword = event.target === sword1 ? sword1 : sword2;
+            placeSwordInCell(sword, cell);
+        });
+        box.appendChild(cell);
+    }
+}
+
+// Place sword in the cell
+function placeSwordInCell(sword, cell) {
+    if (sword.id === 'sword1' && !sword1Dropped) {
+        cell.appendChild(sword);
+        sword1Dropped = true;
+    } else if (sword.id === 'sword2' && !sword2Dropped) {
+        cell.appendChild(sword);
+        sword2Dropped = true;
+    }
+}
+
+// Event listener for the Pierce button
+pierceBtn.addEventListener('click', () => {
+    if (sword1Dropped && sword2Dropped) {
+        result.textContent = 'Both swords are in place! Now let\'s pierce the grid!';
+        // Add more logic for piercing the grid and checking the result
+    } else {
+        result.textContent = 'Please drop both swords in the grid first!';
+    }
+});
+
+// Initialize the game
+createGrid();
+placeImages();
+    </script>
+</body>
+</html>

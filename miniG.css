@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.sword-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sword {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.sword img {
+    width: 50px;
+    height: 50px;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-rows: repeat(4, 1fr);    /* 4 rows */
+    gap: 2px;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border: 3px solid #333;
+}
+
+.cell {
+    width: 70px;
+    height: 70px;
+    background-color: #ffcccb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    border: 1px dashed #aaa;  /* Border to show the drop zone */
+}
+
+.cell.droppable {
+    background-color: lightgreen;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}

@@ -86,3 +86,16 @@
     animation: blink 1s infinite;
   }
   
+  #character {
+    position: absolute;
+    bottom: 275px;
+  }
+  #character img {
+    display: none; /* start hidden */
+
+  }
+  #character-sprite1 {
+    position: absolute;
+    bottom: 0rem;
+    left: 50rem;
+  }
