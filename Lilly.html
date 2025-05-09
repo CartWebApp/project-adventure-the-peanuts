@@ -192,14 +192,14 @@ CHOICE_POINT_6: {
   callback1: () => { typeLine("I...' you stuttered, 'I won't do it, I can't do it."); currentLine++; },
   callback2: () => { typeLine("I...' you muttered, '...I can do it."); currentLine++; }
 },
-CHOICE_POINT_6: {
-  text1: "Kill Lily",
-  text2: "Kill Harald",
-  result1: "'HOW COULD YOU!?' You hear Harald shout at you!",
-  result2: "'HOW COULD YOU!?' Sister Lily shouts at you!",
-  callback1: () => { typeLine("I...' you stuttered, 'I won't do it, I can't do it."); currentLine++; },
-  callback2: () => { typeLine("I...' you muttered, '...I can do it."); currentLine++; }
-},
+// CHOICE_POINT_7: {
+//   text1: "Kill Lily",
+//   text2: "Kill Harald",
+//   result1: "'HOW COULD YOU!?' You hear Harald shout at you!",
+//   result2: "'HOW COULD YOU!?' Sister Lily shouts at you!",
+//   callback1: () => { typeLine("I...' you stuttered, 'I won't do it, I can't do it."); currentLine++; },
+//   callback2: () => { typeLine("I...' you muttered, '...I can do it."); currentLine++; }
+// },
   
   // Add more as needed...
 };
@@ -273,7 +273,7 @@ function showNextLine() {
 
 // Scene changes mapping based on specific dialogue lines
 const sceneChangesByLine = {
-  "You were forced back outside and Sir Gwaine watched you silently.": "images/outsideChurch.png",
+  "You felt Sister Lily grab your arm and shove you away from the Pope and the massacre...": "images/outsideChurch.png",
   "You ran into the night, weaving through the eerie streets to the outskirts of the city...": "images/outside.png",
   "There, your parents' home stood before you like a parent inviting their open arms at you.": "images/outsidehome.png",
   "“There you are darling,” your mother says with a smile upon your arrival. Then your father reaches out to ruffle your hair and he speaks, “There you are, my child.”": "images/insidehome.png",
@@ -284,7 +284,8 @@ const sceneChangesByLine = {
   "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.": "images/insidechurch.png",
   "Later, deep within the catacombs, the Pope walked you to the catacombs. Inside, the two knights stayed locked inside there.": "images/catacombs.png",
   "After the death of one of the knights, you hear something growl in the darkness.": "images/demonScene.png",
-  "You ran out of there, tearing off your stained robes and running off into the light of God to your parents' home.": "images/outsidelight.png"
+  "You ran out of there, tearing off your stained robes and running off into the light of God to your parents' home.": "images/outsidelight.png",
+  "You all watched as a...demon crawled forward." : "images/Ghuame2.png",
 };
 
 // Function to update the background scene
@@ -350,8 +351,20 @@ updateCharacterVisibility(line);
 }
 
 const characterVisibilityByLine = {
+    "She stares at you with scrutiny, enough to make rats tremble.": ["character-sprite1"],
   "The Pope looks down at you, seemingly surprised to find an eavesdropper.": ["character-sprite2", "character-sprite1"],
   "“What do you think, sire? Execute the vermin?”": ["character-sprite1", "character-sprite2"],
+  "“What do you think, sire? Execute the vermin?”" : ["character-sprite1", "character-sprite2"],
+  "The Pope eerily hums, watching you, deciding your worth." : ["character-sprite1", "character-sprite2"],
+  "“Keep this young believer alive.”" : ["character-sprite1", "character-sprite2"],
+  "“Because, daughter Lily...”" : ["character-sprite1", "character-sprite2"],
+  "You felt the Pope's eyes crawl all over you." : ["character-sprite1", "character-sprite2"],
+  "“One shall pay for the sin of eavesdropping on a precious sight.”": ["character-sprite1", "character-sprite2"],
+  "The Pope went quiet for a second..." : ["character-sprite1", "character-sprite2"],
+  "Sister Lily glanced at the Pope silently before waving you off." : ["character-sprite1", "character-sprite2"],
+  "You felt Sister Lily grab your arm and shove you away from the Pope and the massacre..." : ["character-sprite1"],
+  "__CHOICE_POINT_1__" : ["character-sprite1"],
+  "“Head home now,” she said before turning away" : ["character-sprite1"],
   "Looking back, you saw Sister Lily and Archbishop Harald.": ["character-sprite1", "character-sprite3"],
   "“Step away child,” Archbishop Harald said": ["character-sprite1", "character-sprite3"],
   "(either way) The Pope summons forth the Sister Lily and Archbishop Harald.": ["character-sprite1", "character-sprite2", "character-sprite3"],
