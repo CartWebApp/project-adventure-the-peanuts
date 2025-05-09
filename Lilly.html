@@ -71,7 +71,6 @@ const choice3Btn = document.getElementById("choice-3");
   "“Go off now, I await.” The Pope left you alone and you decided to head outside, there was bounded to be some clues.",
   "You found yourself deep within the catacombs. Nothing but darkness, cobwebs, torches, and--",
   "There was something hidden within the darkness.",
-  "Minigame: puzzle game",
   "You find a figure made of stone and wood.",
   "A voice shouts at you, “You there!”",
   "“What are you doing?” You heard a gruff voice behind you.",
@@ -95,7 +94,7 @@ const choice3Btn = document.getElementById("choice-3");
   "The Pope watched you as you stepped forward.",
   "“I can't believe you'll do this,” Archbishop Harald said.",
   "“Obedient sheep,” Sister Lily said.",
-  "Minigame: (choose to kill Sister Lily, or, Archbishop Harald) through magician sword box game",
+  "__CHOICE_POINT_7__",
   "But before you could kill anyone, you hear something growl in the darkness.",
   "You all watched as a...demon crawled forward.",
   "“Ghaume,” the Pope whispered before slowly stepping forward, leaving you and the Templer dumbfounded.",
@@ -190,6 +189,14 @@ CHOICE_POINT_6: {
   text2: "You comply",
   result1: "'I...' you stuttered, 'I won't do it, I can't do it.'",
   result2: "'I...' you muttered, '...I can do it.'",
+  callback1: () => { typeLine("I...' you stuttered, 'I won't do it, I can't do it."); currentLine++; },
+  callback2: () => { typeLine("I...' you muttered, '...I can do it."); currentLine++; }
+},
+CHOICE_POINT_6: {
+  text1: "Kill Lily",
+  text2: "Kill Harald",
+  result1: "'HOW COULD YOU!?' You hear Harald shout at you!",
+  result2: "'HOW COULD YOU!?' Sister Lily shouts at you!",
   callback1: () => { typeLine("I...' you stuttered, 'I won't do it, I can't do it."); currentLine++; },
   callback2: () => { typeLine("I...' you muttered, '...I can do it."); currentLine++; }
 },
