@@ -86,7 +86,18 @@
     animation: blink 1s infinite;
   }
   
-  #character {
+  #character-sprite1 {
     position: absolute;
-    bottom: 275px;
+    top: 40px; 
+    right: 200px;
+  }
+
+    #character-sprite2 {
+    position: absolute;
+    top: 40px; 
+    left: 660px;
+  }
+    #character-sprite3 {
+    position: absolute;
+    top: 40px; 
   }

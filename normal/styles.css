@@ -34,6 +34,8 @@ body {
   opacity: 1;
   pointer-events: auto;
   z-index: 1;
+  position: absolute;
+  
 }
 
 /* Button styling */
@@ -98,9 +100,11 @@ input[type="text"] {
 
 /* Start screen background */
 #start-screen {
-  background-image: url('../images/placeholder.jpg');
-  background-size: cover;
+  background-image: url('../images/intro.png');
+  /* background-size: cover; */
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
 /* Speed buttons container */
@@ -193,3 +197,5 @@ input[type="text"] {
   opacity: 0;
   transition: opacity 1s ease;
 }
+
+ 

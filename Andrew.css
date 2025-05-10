@@ -86,3 +86,34 @@
     animation: blink 1s infinite;
   }
   
+  #character-sprite1 img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+  #character-sprite2 img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+  #character-sprite3 img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+  #character-sprite1 {
+    position: absolute;
+    top: 40px; 
+    right: 200px;
+  }
+
+    #character-sprite2 {
+    position: absolute;
+    top: 40px; 
+    left: 660px;
+  }
+    #character-sprite3 {
+    position: absolute;
+    top: 40px; 
+  }
