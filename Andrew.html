@@ -26,7 +26,7 @@
     <div id="choices" style="display: none;">
       <button id="choice-1"></button>
       <button id="choice-2"></button>
-      <button id="choice-3" style="display: none;"></button>
+      <button id="choice-3"></button>
     </div>
   </div>
 
@@ -88,11 +88,11 @@ const choice3Btn = document.getElementById("choice-3");
   "You ran down the halls.",
   "You panted as you stopped at an empty sermon with the Pope standing there, like he was expecting you.",
   "“What do you have for me?” The Pope says.",
-  "__CHOICE_POINT_6__ (tell the truth, or, lie)",
+  "__CHOICE_POINT_6__",
   "The Pope summons forth some Templer knights and said, “Have Cardinal Andrew down into the catacombs.”",
   "The Templers left and the Pope smiled at you.",
   "“You done yourself well,” the Pope praised, “Perhaps you are more useful than you look. I shall grant you the honors of the execution.”",
-  "__CHOICE_POINT_7__ (no way, or, okay I will)",
+  "__CHOICE_POINT_7__",
   "“You think you have a choice?”",
   "Later, deep within the catacombs, the Pope walked you to the catacombs. Inside, Cardinal Andrew was locked inside there, pacing around a strained face.",
   "“Take this.” The Pope handed you a sword.",
@@ -115,10 +115,8 @@ const choice3Btn = document.getElementById("choice-3");
    "__CHOICE_POINT_9__",
     "__CHOICE_POINT_10__",
   "After the demon is killed, he looked at you, his face of regret and disapointment, “Just go, I have nothing to say to you.”",
-  "You ran out of there, toring off your stained robes and running off into the light of God to your parents home.",
-  "(ending 1: heaven)",
-  "(ending 2: hell)",
-  "(ending 3: the pope wins)",
+  "You ran out of there, toring off your stained robes and running off into the light of God to your parents home...",
+  "...",
   ];
 
   let currentLine = 0;
@@ -142,7 +140,6 @@ const choice3Btn = document.getElementById("choice-3");
       } else {
         clearInterval(interval);
         typing = false;
-        startBlinkTimer(); // start blinking countdown after typing finishes
       }
     }, 1);
   }
@@ -313,9 +310,16 @@ const sceneChangesByLine = {
   "You found the church and you headed inside.": "images/outsidechurchlight.png",
   "Inside, you found the Pope standing there.": "images/insidechurch.png",
   "You founded yourself inside some bedroom, it led to here...": "images/andrewRoom.png",
-  "Returning back to the cathedral, you see the Pope waiting there after his grandoise sermons.": "images/insidechurch.png",
+  "You ran down the halls.":"images/insidechurch.png",
+  "You panted as you stopped at an empty sermon with the Pope standing there, like he was expecting you.":"images/insidechurch.png",
+  "“What do you have for me?” The Pope says.":"images/insidechurch.png",
   "Later, deep within the catacombs, the Pope walked you to the catacombs. Inside, Cardinal Andrew was locked inside there, pacing around a strained face.": "images/catacombs.png",
-  "After the death of one of the knights, you hear something growl in the darkness.": "images/Ghuame2.png",
+  "You hear something growl in the darkness.": "images/Ghuame2.png",
+  "You watched as a...demon crawled forward.": "images/Ghuame2.png",
+  "“Ghaume,” the Pope whispered before slowly stepping forward, leaving you both dumbfounded.": "images/Ghuame2.png",
+  "The Pope began to yell, “Come to me! Hear---”": "images/Ghuame2.png",
+  "The Pope vanished, gone, into the mouth of the demon.": "images/Ghuame2.png",
+  "After the demon is killed, he looked at you, his face of regret and disapointment, “Just go, I have nothing to say to you.”":"images/catacombs.png",
   "You ran out of there, tearing off your stained robes and running off into the light of God to your parents' home.": "images/outsidelight.png",
 };
 
@@ -337,10 +341,10 @@ function showNextLine() {
   nextBtn.classList.remove("blink");
 
   if (currentLine >= dialogueLines.length) {
-    dialogueText.textContent = "But you? You burst through the doors.";
+    dialogueText.textContent = "Judgement...";
     nextBtn.disabled = true;
     setTimeout(() => {
-      window.location.href = "refuse-the-call.html"; // Redirect after finishing dialogue
+      window.location.href = "Pope.html"; // Redirect after finishing dialogue
     }, 2000);
     return;
   }
@@ -383,7 +387,9 @@ updateCharacterVisibility(line);
 
 const characterVisibilityByLine = {
  "“Excuse me, young believer.” You saw Cardinal Andrew look at you as he spoke his next words, “Shouldn't you be home?”": ["character-sprite1"], // Cardinal Andrew only
-  "Inside, you found the Pope standing there.": ["character-sprite2"], 
+  "Cardinal Andrew looks like he was about to laugh or cringe.":["character-sprite1"],
+  "“Very funny,” he says, “But you shouldn't be joking, head home now as I deem so.” He waved you off gently before turning back to the rest of the holy men.":["character-sprite1"],
+ "Inside, you found the Pope standing there.": ["character-sprite2"], 
   "“Young believer,” the Pope approached you and appraised you. “You have a task that is demanded of you. Find the the gossipers who damn me, hurry now.”":["character-sprite2"],
   "“Go off now, I await.” The Pope left you alone and you decided to head outside, there was bounded to be something.":["character-sprite2"],
 "And him.": ["character-sprite3"],

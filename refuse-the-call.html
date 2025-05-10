@@ -115,13 +115,14 @@ typeLine(dialogueLines[currentLine]);
     currentLine++;
   } else {
     // When dialogue is finished, show "To Be Continued"
-    dialogueText.textContent = "To be Continued.";
+    if (currentLine >= dialogueLines.length) {
+    dialogueText.textContent = "You...";
     nextBtn.disabled = true;
-
-    // Wait for 2 seconds before redirecting to the next page
     setTimeout(() => {
-      window.location.href = "startingscene.html"; // Redirect to another page
-    }, 2000); // 2 seconds delay
+      window.location.href = "Andrew.html"; // Redirect after finishing dialogue
+    }, 2000);
+    return;
+  }
   }
 }
 

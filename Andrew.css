@@ -117,3 +117,84 @@
     position: absolute;
     top: 40px; 
   }
+
+  
+  #choices {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; 
+    align-items: center;
+    width: 100%;
+  }
+  
+  #choice-1 button {
+    background-color: rgba(0, 0, 0, 0.4); 
+    color: #aa0000; 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #c2a56c; 
+    border-radius: 4px;
+    padding: 12px 32px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(194, 165, 108, 0.3);
+    width: 500px;
+
+  }
+  
+  #choice-1 button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(194, 165, 108, 0.6);
+    transform: scale(1.07);
+  }
+  
+    #choice-2 button {
+    background-color: rgba(0, 0, 0, 0.4); 
+    color: #f0e6d2; 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #c2a56c; 
+    border-radius: 4px;
+    padding: 12px 32px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(194, 165, 108, 0.3);
+    width: 500px;
+
+  }
+  
+  #choice-2 button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(194, 165, 108, 0.6);
+    transform: scale(1.07);
+  }
+    #choice-3 button {
+    background-color: rgba(0, 0, 0, 0.4); 
+    color: #f0e6d2; 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #c2a56c; 
+    border-radius: 4px;
+    padding: 12px 32px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(194, 165, 108, 0.3);
+    width: 500px;
+
+  }
+  
+  #choice-3 button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(194, 165, 108, 0.6);
+    transform: scale(1.07);
+  }
